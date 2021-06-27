@@ -1,0 +1,251 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #1f2128;
+  color: #ffffff;
+  background-image: url("/Content/Images/bg-sign-in.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+  .login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient( 148.37deg, rgba(58, 62, 69, 0.0001) 29.5%, rgba(27, 29, 33, 0.707195) 74.66% );
+    z-index: 0;
+  }
+
+.login__wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.login__left {
+  padding: 24px;
+  margin-top: 10px;
+}
+
+  .login__left .login__logo {
+    font-size: 50px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .login__left .login__info {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 12px 0px 36px 0px;
+  }
+
+.games .games__items {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: rgba(27, 29, 33, 0.5);
+  border-radius: 12px;
+  margin: 24px 0px;
+  max-width: 220px;
+}
+
+  .games .games__items .game__cover {
+    height: 100px;
+    width: 72px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+.game__detail .game__title {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.game__detail .game__category {
+  font-size: 12px;
+  color: #808191;
+}
+
+.login__form {
+  width: 100%;
+  max-width: 440px;
+  background-color: #242731;
+  padding: 48px 48px 64px;
+  border-radius: 36px;
+  margin-left: auto;
+}
+
+  .login__form .title {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
+
+.login__line {
+  margin: 12px 0px 36px 0px;
+}
+
+.login__text {
+  color: #808191;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.login__link {
+  color: #3f8cff;
+  margin-left: 16px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.input-field {
+  border-radius: 8px;
+  height: 56px;
+  padding: 0 22px;
+  color: #ffffff;
+  background: rgba(228, 228, 228, 0.05);
+  border: 1px solid rgba(228, 228, 228, 0.05);
+  margin-bottom: 24px;
+}
+
+  .input-field:focus {
+    background: rgba(228, 228, 228, 0.05);
+    color: #ffffff;
+    box-shadow: 0 0 0 0.1rem #6c5dd3;
+  }
+
+.label {
+  margin: 12px 0px;
+}
+
+.btn {
+  height: 56px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 160px;
+}
+
+.btn_purple {
+  background: #6c5dd3;
+  color: white;
+  border: none;
+}
+
+  .btn_purple:hover {
+    background: #5f4ed1;
+    color: white;
+  }
+
+.btn_gray {
+  background: rgba(228, 228, 228, 0.1);
+  color: #ffffff;
+}
+
+  .btn_gray:hover {
+    background: rgba(148, 93, 93, 0.1);
+    color: #ffffff;
+  }
+
+.is-invalid {
+  border: 1px solid rgb(201, 42, 42);
+}
+
+/*profile__form*/
+.modal-header {
+  border-bottom: 0;
+}
+
+.modal-footer {
+  border-top: 0;
+}
+
+.profile__modal {
+  background-color: #242731;
+  color: white;
+  padding: 24px;
+  border-radius: 24px;
+  min-width: 600px;
+}
+
+  .profile__modal hr {
+    background: rgba(228,228,228,0.46);
+    margin: 24px 0px;
+  }
+
+.tags {
+  margin: 12px 0px 36px 0px;
+}
+
+  .tags a {
+    margin-right: 12px;
+    border: 2px solid #ff754c;
+    border-radius: 12px;
+    padding: 6px 16px;
+    line-height: 1.42857;
+    font-weight: 600;
+    color: white;
+  }
+
+    .tags a:hover,
+    .tags .active {
+      background: #6c5dd3;
+      border-color: #6c5dd3;
+    }
+
+.profile__form textarea {
+  display: block;
+  width: 100%;
+  background: rgba(228, 228, 228, 0.05);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 24px;
+}
+
+  .profile__form textarea:focus {
+    border: none;
+    outline: none !important;
+    box-shadow: 0 0 0 0.1rem #6c5dd3;
+  }
+
+  .profile__form textarea:focus-visible {
+    outline: none !important;
+  }
+
+.avatar__form img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 12px 24px 12px 0px;
+}
+
+.modal-footer {
+  justify-content: flex-start;
+}

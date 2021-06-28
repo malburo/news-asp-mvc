@@ -14,30 +14,19 @@ namespace NewsApplication.Controllers
             return View();
         }
 
-        public ActionResult Test()
+        public ActionResult Categories()
         {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var listUser = context.Users.ToList();
-            return View(listUser);
-        }
-
-        public ActionResult Test2()
-        {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var listUser = context.Roles.ToList();
-            return View(listUser);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult DetailsCategory()
         {
-            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult Details()
+        {
 
             return View();
         }

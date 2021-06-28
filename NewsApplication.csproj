@@ -200,6 +200,12 @@
     <Compile Include="ViewModels\SubCommentViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\new_game.css" />
+    <Content Include="Content\assets\css\styles.css" />
+    <Content Include="Content\assets\js\app.js" />
+    <Content Include="Content\assets\lib\css\style.css" />
+    <Content Include="Content\assets\lib\img\Four-Horsemen-of-the-Apocalypse_3840x2160.jpg" />
+    <Content Include="Content\assets\lib\img\jungle_harbor_by_fengua_zhong_de2molv.jpg" />
     <Content Include="Content\Auth.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -252,6 +258,8 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\assets\css\styles.css.map" />
+    <Content Include="Content\assets\css\styles.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -297,11 +305,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
-    <Content Include="Views\Home\Test2.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Home\DetailsCategory.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\image\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

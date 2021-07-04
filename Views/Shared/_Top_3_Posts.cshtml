@@ -1,0 +1,40 @@
+﻿
+@foreach (var post in ViewBag.Posts)
+{
+<div class="col-lg-4">
+    <div class="items-container">
+        <div class="smallblock newscard">
+            <div class="img-container">
+                <img src="@post.ImageUrl" alt="" />
+            </div>
+            <div class="small-block-content-container">
+                <div class="small-block-content">
+                    @foreach (var subCate in post.SubCategory)
+                    {
+                        <a href="/Home/DetailsCategory/@subCate.SubCategoryId" class="small-block-tag">@subCate.Name</a>
+                    }
+                    <a href="#" class="small-block-title">@post.Title</a>
+                </div>
+            </div>
+            <div class="container small-block-subcontent-container">
+                <div class="row no-gutters">
+                    <div class="col-lg-8">
+                        <div class="views-label">
+                            <i style="color: rgb(0, 109, 199)" class="fa fa-check-circle" aria-hidden="true">
+                                <p class="views-number">@post.Views</p>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <a class="bookmark-btn" href="#">
+                            <i class="fa fa-bookmark" aria-hidden="true">
+                                Save
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

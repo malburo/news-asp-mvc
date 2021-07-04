@@ -165,77 +165,7 @@ a {
     margin-right: 5px;
 }
 
-.container {
-    padding: 0px 50px !important;
-    padding-top: 100px !important;
-}
 
-.container .header-post .header-post-tag {
-    background-color: red;
-    color: white;
-    text-transform: capitalize;
-    padding: 0px 8px !important;
-    border-radius: 9999px !important;
-}
-
-.container .content-post {
-    height: auto;
-}
-
-.container .content-post__related {
-    padding-left: 50px;
-}
-
-.container .rating-image a {
-    opacity: 0.9;
-    top: 0%;
-    left: 50%;
-    -webkit-transform: translate(-50%, 50%);
-    transform: translate(-50%, 50%);
-    padding: 20px 20px;
-    font-weight: bold;
-    border-radius: 50% !important;
-    font-size: 20px;
-    --tw-gradient-from: #2563eb !important;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(37, 99, 235, 0)) !important;
-}
-
-.container .articles article:not(:last-child) {
-    border-bottom: 1px solid gray;
-}
-
-.container .articles a {
-    line-height: 20px;
-    font-size: 16px;
-    text-align: left;
-    color: black;
-}
-
-.container .related-posts {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr);
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.container .related-posts article {
-    padding: 10px 10px;
-}
-
-.container .related-posts .related-post-tag a {
-    border-radius: 9999px !important;
-    padding: 0px 10px !important;
-}
-
-.container .related-posts .related-post-title h2 {
-    opacity: 0.8;
-    cursor: pointer;
-}
-
-.container .related-posts .related-post-title h2:hover {
-    opacity: 1;
-    cursor: pointer;
-}
 footer {
     margin-top: 20px;
 }

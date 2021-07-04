@@ -1,0 +1,39 @@
+﻿@model IEnumerable<NewsApplication.Models.SubCategory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Sub Category</h2>
+
+<p>
+    <button class="btn btn-primary">@Html.ActionLink("Create New", "Create", null, new { @class = "text-white text-decoration-none" }) </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Category
+        </th>
+        <th>
+            Sub Category
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <button class="btn btn-primary">@Html.ActionLink("Edit", "Edit", new { id = item.SubCategoryId }, new { @class = "text-white text-decoration-none" }) </button>
+            <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.SubCategoryId }, new { @class = "text-white text-decoration-none" }) </button>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace NewsApplication.Models
         public virtual DbSet<SubComment> SubComments { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Reaction> Reactions { get; set; }
+        public IEnumerable ApplicationUsers { get; internal set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -31,7 +33,6 @@ namespace NewsApplication.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<Post>()
               .HasMany(e => e.SubCategory)
               .WithMany(e => e.Posts)

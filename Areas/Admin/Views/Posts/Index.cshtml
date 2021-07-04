@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NewsApplication.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Post</h2>
+
+<p>
+    <button class="btn btn-primary"> @Html.ActionLink("Create New", "Create", null, new { @class ="text-white text-decoration-none"})</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Views)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>    
+           <img src="@item.ImageUrl" width="100"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Views)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedAt)
+        </td>
+        <td>
+            <button class="btn btn-primary">@Html.ActionLink("Edit", "Edit", new { id = item.PostId }, new {@class = "text-white text-decoration-none"}) </button>
+            <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.PostId }, new { @class = "text-white text-decoration-none" }) </button>
+        </td>
+    </tr>
+}
+
+</table>

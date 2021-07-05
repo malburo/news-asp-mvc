@@ -1,0 +1,932 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A6AC68D6-767D-4D0C-B6B2-2EF29DE57303}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NewsApplication</RootNamespace>
+    <AssemblyName>NewsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44346</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubCategoriesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106271952214_version 1.0.cs" />
+    <Compile Include="Migrations\202106271952214_version 1.0.Designer.cs">
+      <DependentUpon>202106271952214_version 1.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Bookmark.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Reaction.cs" />
+    <Compile Include="Models\SubCategory.cs" />
+    <Compile Include="Models\SubComment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BookmarkViewModels.cs" />
+    <Compile Include="ViewModels\CategoryViewModels.cs" />
+    <Compile Include="ViewModels\CommentViewModels.cs" />
+    <Compile Include="ViewModels\PostViewModels.cs" />
+    <Compile Include="ViewModels\ReactionViewModels.cs" />
+    <Compile Include="ViewModels\SubCategoryViewModels.cs" />
+    <Compile Include="ViewModels\SubCommentViewModels.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Admin\assets\demo\chart-area-demo.js" />
+    <Content Include="Content\Admin\assets\demo\chart-bar-demo.js" />
+    <Content Include="Content\Admin\assets\demo\chart-pie-demo.js" />
+    <Content Include="Content\Admin\assets\demo\datatables-demo.js" />
+    <Content Include="Content\Admin\assets\img\error-404-monochrome.svg" />
+    <Content Include="Content\Admin\css\styles.css" />
+    <Content Include="Content\Admin\js\datatables-simple-demo.js" />
+    <Content Include="Content\Admin\js\scripts.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\adapters\jquery.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\build-config.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\ckeditor.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\config.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\contents.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\af.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ar.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\az.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\bg.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\bn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\bs.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\cs.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\cy.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\da.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\de-ch.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\de.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\el.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\en-au.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\en-ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\en-gb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\en.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\eo.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\es-mx.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\es.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\et.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\eu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\fa.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\fi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\fo.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\fr-ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\fr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\gl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\gu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\he.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\hi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\hr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\hu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\id.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\is.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\it.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ja.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ka.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\km.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ko.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ku.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\lt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\lv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\mk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\mn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ms.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\nb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\nl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\no.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\oc.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\pl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\pt-br.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\pt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ro.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ru.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\si.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\sk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\sl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\sq.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\sr-latn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\sr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\sv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\th.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\tr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\tt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\ug.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\uk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\vi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\zh-cn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\lang\zh.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\about\dialogs\about.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\colordialog\dialogs\colordialog.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\copyformatting\cursors\cursor-disabled.svg" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\copyformatting\cursors\cursor.svg" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\copyformatting\styles\copyformatting.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\dialog\styles\dialog.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\div\dialogs\div.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\plugindefinition.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\authentication.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\exportpdf.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\configfilename.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\emptyeditor.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\integration.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\integrations\easyimage.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\notifications.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\notificationsasync.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\paperformat.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\readonly.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\stylesheets.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokenfetching.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokentwoeditorscorrect.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokentwoeditorswrong.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokenwithouturl.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\wrongendpoint.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\notification.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\resourcespaths.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\statistics.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\stylesheets.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\_helpers\tools.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\find\dialogs\find.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\flash\dialogs\flash.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\flash\images\placeholder.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\button.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\form.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\radio.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\select.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\textarea.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\dialogs\textfield.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\icons.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\icons_hidpi.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\iframe\images\placeholder.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\image\dialogs\image.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\image\images\noimage.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\link\dialogs\anchor.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\link\dialogs\link.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\link\images\anchor.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\magicline\images\icon.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\pastefromgdocs\filter\default.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\pastefromlibreoffice\filter\default.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\pastefromword\filter\default.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\pastetools\filter\common.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\pastetools\filter\image.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\preview\images\pagebreak.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\preview\preview.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\preview\styles\screen.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\scayt\dialogs\dialog.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\scayt\dialogs\options.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\scayt\skins\moono-lisa\scayt.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_address.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_div.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_h1.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_h2.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_h3.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_h4.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_h5.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_h6.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_p.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\showblocks\images\block_pre.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\angel_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\angry_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\broken_heart.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\confused_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\cry_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\devil_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\embarrassed_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\envelope.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\envelope.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\heart.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\heart.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\kiss.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\kiss.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\lightbulb.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\omg_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\regular_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\sad_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\shades_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\teeth_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\thumbs_down.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\thumbs_up.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\tongue_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\whatchutalkingabout_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\smiley\images\wink_smile.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\sr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\table\dialogs\table.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\templates\dialogs\templates.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\templates\dialogs\templates.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\templates\templates\default.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\templates\templates\images\template1.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\templates\templates\images\template2.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\templates\templates\images\template3.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\widget\images\handle.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\icons\hidpi\spellchecker.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\icons\spellchecker.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\af.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ar.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\bg.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\bn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\bs.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\cs.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\cy.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\da.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\de.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\el.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\en-au.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\en-ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\en-gb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\en.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\eo.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\es.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\et.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\eu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\fa.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\fi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\fo.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\fr-ca.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\fr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\gl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\gu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\he.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\hi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\hr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\hu.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\is.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\it.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ja.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ka.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\km.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ko.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ku.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\lt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\lv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\mk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\mn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ms.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\nb.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\nl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\no.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\pl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\pt-br.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\pt.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ro.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ru.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\sk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\sl.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\sr-latn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\sr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\sv.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\th.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\tr.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\ug.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\uk.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\vi.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\zh-cn.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\lang\zh.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\plugin.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\skins\moono-lisa\wsc.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\css\samples.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\img\github-top.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\img\header-bg.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\img\header-separator.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\img\logo.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\img\logo.svg" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\img\navigation-tip.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\index.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\js\sample.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\js\sf.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\ajax.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\api.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\appendto.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\assets\posteddata.php" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\assets\sample.jpg" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\datafiltering.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\dialog\dialog.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\divreplace.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\enterkey\enterkey.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\index.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\inlineall.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\inlinebycode.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\inlinetextarea.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\jquery.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\magicline\magicline.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\readonly.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\replacebyclass.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\replacebycode.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\sample.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\sample.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\sample_posteddata.php" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\tabindex.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\toolbar\toolbar.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\uicolor.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\uilanguages.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\xhtmlstyle.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\index.html" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\dialog.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\editor.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\editor_ie.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\icons.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\arrow.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\close.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\lock.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\refresh.png" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\styles.js" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\vendor\promise.js" />
+    <Content Include="Content\assets\css\new_game.css" />
+    <Content Include="Content\assets\css\styles.css" />
+    <Content Include="Content\assets\js\app.js" />
+    <Content Include="Content\assets\lib\css\style.css" />
+    <Content Include="Content\assets\lib\img\Four-Horsemen-of-the-Apocalypse_3840x2160.jpg" />
+    <Content Include="Content\assets\lib\img\jungle_harbor_by_fengua_zhong_de2molv.jpg" />
+    <Content Include="Content\Auth.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\bg-sign-in.png" />
+    <Content Include="Content\Images\call-of-duty.jpg" />
+    <Content Include="Content\Images\dota.jpg" />
+    <Content Include="Content\Images\lol.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\assets\css\styles.css.map" />
+    <Content Include="Content\assets\css\styles.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\bower.json" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\CHANGES.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\composer.json" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\LICENSE.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\package.json" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\CHANGELOG.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\LICENSE.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\README.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\configfilename.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\emptyeditor.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\integration.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\integrations\easyimage.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\notifications.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\notificationsasync.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\paperformat.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\readonly.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\stylesheets.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokenfetching.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokentwoeditorscorrect.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokentwoeditorswrong.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\tokenwithouturl.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\exportpdf\tests\manual\wrongendpoint.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\scayt\CHANGELOG.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\scayt\LICENSE.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\scayt\README.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\LICENSE.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\plugins\wsc\README.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\README.md" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Views\package-lock.json" />
+    <Content Include="Areas\Admin\Views\Posts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\SubCategories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SubCategories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SubCategories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SubCategories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SubCategories\Index.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Home\DetailsCategory.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Post\showPost.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Content\assets\image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106271952214_version 1.0.resx">
+      <DependentUpon>202106271952214_version 1.0.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55883</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44346/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

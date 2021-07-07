@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NewsApplication.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<p>
+    <button class="btn btn-primary"> @Html.ActionLink("Create new", "Create", null, new { @class = "text-white text-decoration-none" })</button>
+    <button class="btn btn-primary"> @Html.ActionLink("Create new Sub", "Create", "SubCategories", null, new { @class = "text-white text-decoration-none" })</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Email
+        </th>
+        <th>
+            User's Name
+        </th>
+        <th>
+            Roles
+        </th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="col-md-2">
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td class="col-md-6">
+                @{
+                    Html.RenderAction("RenderRoles", "Users", new { id = item.Id });
+                }
+            </td>
+            <td class="col-md-2">
+                <button class="btn btn-primary">@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "text-white text-decoration-none" }) </button>
+                <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "text-white text-decoration-none" }) </button>
+            </td>
+        </tr>
+    }
+
+</table>
+

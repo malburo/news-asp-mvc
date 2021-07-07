@@ -123,5 +123,12 @@ namespace NewsApplication.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [ChildActionOnly]
+        public  ActionResult RenderSubMenu(int? id)
+        {
+            ViewBag.SubCategory = db.SubCategories.Where(x => x.CategoryId == id);
+            return PartialView("RenderSubMenu");
+        }
     }
 }

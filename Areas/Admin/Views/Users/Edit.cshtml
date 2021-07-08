@@ -1,0 +1,72 @@
+﻿@model NewsApplication.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Edit User</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group pt-2">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 pb-1" })
+        <div class="col-md-5">
+            <h5>@Html.DisplayFor(model => model.Email)</h5>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2 pb-1" })
+        <div class="col-md-5">
+            <h5>@Html.DisplayFor(model => model.UserName)</h5>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        <label class="control-label col-md-2 pb-2">Permission</label>
+        <div class="col-md-10">
+            @if (ViewBag.user_role != null)
+            {
+                foreach (var sub in ViewBag.roles)
+                {
+                    int i = 0;
+                    foreach (var role in ViewBag.user_role)
+                    {
+                        if (role.RoleId == sub.Id)
+                        {
+                            i++;
+                            <input class="form-check-input" name="roles" checked value="@sub.Id" type="checkbox" id="role">
+                            <label class="form-check-label" for="role" style="margin-right: 10px;">
+                                @sub.Name
+                            </label>
+                        }
+                    }
+                    if (i == 0)
+                    {
+                        <input class="form-check-input" name="roles" value="@sub.Id" type="checkbox" id="role">
+                        <label class="form-check-label" for="role" style="margin-right: 10px;">
+                            @sub.Name
+                        </label>
+                    }
+                }
+
+            }
+            <p class="text-danger">@ViewBag.error</p>
+        </div>
+        <div class="form-group pt-2 pb-2">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    }
+
+<div>
+    <button class="btn btn-primary">  @Html.ActionLink("Back to List", "Index", "Users", "", new { @class = "text-white text-decoration-none" })</button>
+</div>

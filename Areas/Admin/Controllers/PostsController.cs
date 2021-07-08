@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace NewsApplication.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Staff")]
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -10,6 +10,7 @@ using NewsApplication.Models;
 
 namespace NewsApplication.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class SubCategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

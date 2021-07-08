@@ -10,15 +10,22 @@ namespace NewsApplication.Controllers
 {
     public class HomeController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
             return View();
         }
 
+        [ChildActionOnly]       
+        public ActionResult RenderNavBar()
+        {
+            var categories = db.Categories.ToList();
+            ViewBag.Cate = categories;
+            return PartialView("_Nav");
+        }
+
         public ActionResult Categories(int id)
         {
-
-            ApplicationDbContext db = new ApplicationDbContext();
             Category category = db.Categories.FirstOrDefault(p => p.CategoryId == id);
             if (category == null)
             {
@@ -43,7 +50,6 @@ namespace NewsApplication.Controllers
         [ChildActionOnly]
         public ActionResult RenderTop3Posts(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             List<Post> Posts = (from p in db.Posts
                                 where p.SubCategory.Any(s => s.SubCategoryId == id)
                                 orderby p.CreatedAt descending
@@ -51,9 +57,21 @@ namespace NewsApplication.Controllers
             ViewBag.Posts = Posts;
             return PartialView("_Top_3_Posts");
         }
+
+        [ChildActionOnly]
+        public ActionResult RenderTop3PostsRE(int id)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            List<Post> posts = context.Posts.Where(p=>p.SubCategory.Any(s=>s.Posts.Any(p1=>p1.PostId==id))).ToList();
+            posts = posts.OrderByDescending(p => p.CreatedAt).Take(3).ToList();
+            ViewBag.Posts = posts;
+            return PartialView("_Top_3_PostsRE");
+        }
+
+
+
         public ActionResult DetailsCategory(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             SubCategory subCategory = db.SubCategories.FirstOrDefault(s => s.SubCategoryId == id);
             if (subCategory == null)
             {

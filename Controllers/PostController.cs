@@ -9,20 +9,58 @@ namespace NewsApplication.Controllers
 {
     public class PostController : Controller
     {
+
         // GET: Post
-        public ActionResult showPost( int id)
+        public ActionResult showPost(int id)
         {
             ApplicationDbContext context = new ApplicationDbContext();
-            Post dbpost = context.Posts.FirstOrDefault(p => p.PostId==id);
+            Post dbpost = context.Posts.FirstOrDefault(p => p.PostId == id);
             return View(dbpost);
         }
-
-        public ActionResult relatePost()
+        [ChildActionOnly]
+        public ActionResult rate3PostPartial(int id)
+        {
+            
+                ApplicationDbContext context = new ApplicationDbContext();
+                var posts = (from p in context.Posts orderby p.PostId descending select p).Take(3).ToList();
+                ViewBag.posts = posts;
+                return PartialView("_rate3postPartial");
+            
+        }
+        [ChildActionOnly]
+        public ActionResult new3PostPartial(int id)
         {
             ApplicationDbContext context = new ApplicationDbContext();
-            
+            var posts = (from p in context.Posts orderby p.CreatedAt descending select p).Take(3).ToList();
+            ViewBag.post = posts;
+
+            return PartialView("_new3PostPartial");
+        }
+       
+        [ChildActionOnly]
+        /* public ActionResult relatedPostPartial(int id)
+         {
+             ApplicationDbContext context = new ApplicationDbContext();
+             var posts = (from p in context.Posts orderby p.PostId descending select p).Take(3).ToList();
+             ViewBag.posts = posts;
+             return PartialView("_relatedPostPartial");
+         }*/
+        public ActionResult relatedPostPartial(int id)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var listsub = context.Posts.Find(id).SubCategory.First();
+            var posts = from p in context.Posts
+                        where p.SubCategory.Any(s => s.SubCategoryId == listsub.CategoryId)
+                        select p;
+            ViewBag.Posts = posts.OrderByDescending(p => p.CreatedAt).Take(3).ToList();
+            return PartialView("_relatedPostPartial");
+        }
+        public ActionResult Search(string searchString)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var search = context.Posts.SqlQuery("Select * from Post Where Title like '%" + searchString + "%'").ToList();
+            ViewBag.Search = search;
             return View();
         }
-
     }
 }

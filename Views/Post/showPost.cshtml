@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-12 header-post w-100">
             <a href="#" class="header-post-tag btn">Tin game</a>
-            <h2 class="font-weight-bold" style="font-size: 30px;">Battlefield 6 rò rỉ loạt ảnh mới, tiết lộ lối chơi! – Tin Game</h2>
+            <h2 class="font-weight-bold" style="font-size: 30px;">@Html.Raw(Model.Title)</h2>
             <p><span>05/06/2021</span> bởi <span> <a href="#">Mr. John</a></span></p>
         </div>
     </div>
@@ -20,48 +20,12 @@
             
         </div>
         <div class="content-post content-post-sm col-md-4">
-            <div class="content-post__related">
-                <h3 class="font-weight-bold" style="font-size: 20px m !important;">
-                    Đánh giá game
-                </h3>
-                <article class="rating-image position-relative">
-                    <img src="https://d9n64ieh9hz8y.cloudfront.net/wp-content/uploads/20210603170940/fallen-legion-revenants-danh-gia-game-1.jpg" alt="banner-game" style="max-width: 100%;">
-                    <a href="#" class="position-absolute btn btn-primary">3.5</a>
-                </article>
-                <div class="articles">
-                    <article>
-                        <h3><a href="#">Fallen Legion Revenants – Đánh Giá Game</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="#">Fallen Legion Revenants – Đánhdsadsa Giá Game Fallen Legion Revenants – Đánh Giá Game</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="#">Fallen Legion Revenants – Đánh Giá Game</a></h3>
-                    </article>
-                </div>
-
-            </div>
-            <div class="content-post__related">
-                <h3 class="font-weight-bold" style="font-size: 20px m !important;">
-                    Bài mới nhất
-                </h3>
-                <article class="rating-image position-relative">
-                    <img src="https://d9n64ieh9hz8y.cloudfront.net/wp-content/uploads/20210603170940/fallen-legion-revenants-danh-gia-game-1.jpg" alt="banner-game" style="max-width: 100%;">
-                    <a href="#" class="position-absolute btn btn-primary">3.5</a>
-                </article>
-                <div class="articles">
-                    <article>
-                        <h3><a href="#">Fallen Legion Revenants – Đánh Giá Game</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="#">Fallen Legion Revenants – Đánhdsadsa Giá Game Fallen Legion Revenants – Đánh Giá Game</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="#">Fallen Legion Revenants – Đánh Giá Game</a></h3>
-                    </article>
-                </div>
-
-            </div>
+            @{ 
+                Html.RenderAction("rate3PostPartial", "Post");
+            }
+            @{ 
+                Html.RenderAction("new3PostPartial", "Post");
+            }
         </div>
     </div>
     <div class="row">
@@ -140,61 +104,9 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="related pt-3 col-md-12 col-sm-12">
-            <h2 style="font-size: 25px;">Bài liên quan</h2>
-            <div class="related-posts col-sm-12 w-100">
-                <article class="">
-                    <a href="" class="w-100">
-                        <img src="https://d9n64ieh9hz8y.cloudfront.net/wp-content/uploads/20210604141713/2k-games-lo-ba-game-moi-truoc-them-e3-2021-tin-game-1.jpg" style="max-width: 100%;" alt="">
-                    </a>
-                    <div class="related-post-tag pt-2">
-                        <a class="btn btn-dark text-capitalize" href="">Tin Game</a>
-                        <a class="btn btn-danger text-capitalize" href="">Tin Game</a>
-                    </div>
-                    <div class="related-post-title">
-                        <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">2K Games lộ ba game mới trước thềm E3 2021 – Tin Game</h2>
-                        <p>
-                            <span>04/06/2021</span> bởi
-                            <a class="" href="">Mr. John</a>
-                        </p>
-                    </div>
-                </article>
-                <article class="col-sm-12">
-                    <a href="" class="w-100">
-                        <img src="https://d9n64ieh9hz8y.cloudfront.net/wp-content/uploads/20210604141713/2k-games-lo-ba-game-moi-truoc-them-e3-2021-tin-game-1.jpg" style="max-width: 100%;" alt="">
-                    </a>
-                    <div class="related-post-tag pt-2">
-                        <a class="btn btn-dark text-capitalize" href="">Tin Game</a>
-                        <a class="btn btn-danger text-capitalize" href="">Tin Game</a>
-                    </div>
-                    <div class="related-post-title">
-                        <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">2K Games lộ ba game mới trước thềm E3 2021 – Tin Game</h2>
-                        <p>
-                            <span>04/06/2021</span> bởi
-                            <a class="" href="">Mr. John</a>
-                        </p>
-                    </div>
-                </article>
-                <article>
-                    <a href="" class="w-100">
-                        <img src="https://d9n64ieh9hz8y.cloudfront.net/wp-content/uploads/20210604141713/2k-games-lo-ba-game-moi-truoc-them-e3-2021-tin-game-1.jpg" style="max-width: 100%;" alt="">
-                    </a>
-                    <div class="related-post-tag pt-2">
-                        <a class="btn btn-dark text-capitalize" href="">Tin Game</a>
-                        <a class="btn btn-danger text-capitalize" href="">Tin Game</a>
-                    </div>
-                    <div class="related-post-title">
-                        <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">2K Games lộ ba game mới trước thềm E3 2021 – Tin Game</h2>
-                        <p>
-                            <span>04/06/2021</span> bởi
-                            <a class="" href="">Mr. John</a>
-                        </p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
+    @{ 
+        Html.RenderAction("relatedPostPartial", "Post");
+    }
 
 </div>
 <!-- End main -->

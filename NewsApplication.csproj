@@ -310,6 +310,10 @@
     <Content Include="Views\Home\DetailsCategory.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Post\showPost.cshtml" />
+    <Content Include="Views\Shared\_relatedPostPartial.cshtml" />
+    <Content Include="Views\Shared\_new3PostPartial.cshtml" />
+    <Content Include="Views\Shared\_rate3postPartial.cshtml" />
+    <Content Include="Views\Post\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

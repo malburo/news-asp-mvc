@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string str = Request.QueryString["searchString"];
+}
+
+@{
+    if (str == "")
+    {
+        <h3>Không tìm thấy bài viết bạn cần tìm! Mời bạn nhập lại bài viết cần tìm!</h3>
+    }
+    else
+    {
+
+        <div class="container">
+
+            <div class="row">
+                @foreach (var search in ViewBag.Search)
+                {
+                    if (search == null)
+                    {
+                        <h3>Không tìm thấy bài viết!</h3>
+                    }
+                    else
+                    {
+                    <div class="col-md-4">
+                        <a href="#"><img class="img_news" src="@search.ImageUrl" alt=""></a>
+                        <span class="span_1"><a href="#" class="span_text">Tin Game</a></span>
+                        <h2 class="news-title">
+                            <a class="text-title" href="https://vietgame.asia/tales-of-arise-he-lo-hai-nhan-vat-moi-truoc-them-e3-tin-game/">
+                                @search.Title
+                            </a>
+                        </h2>
+                        <div class="my-1 text-gray-800 text-sm dark:text-gray-300">
+                            <time class="updated" datetime="2021-06-11T09:06:46+00:00">
+                                11/06/2021
+                            </time>
+                            <span class="byline author vcard">
+                                <span>bởi</span>
+                                <a style="text-decoration: none; color: #000000;" href="https://vietgame.asia/author/piketr-cechillas/" rel="author" class="fn shadow-ul dark:shadow-ul-dark">
+                                    Piketr Cechillas
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    }
+
+                }
+            </div>
+        </div>
+    }
+
+}
+

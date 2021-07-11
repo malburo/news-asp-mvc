@@ -17,7 +17,8 @@ namespace NewsApplication.Areas.Admin
             context.MapRoute(
                 "admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "NewsApplication.Areas.Admin.Controllers" }
             );
         }
     }

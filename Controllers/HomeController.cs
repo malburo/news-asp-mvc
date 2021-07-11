@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using NewsApplication.Models;
+﻿using NewsApplication.Models;
 using NewsApplication.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace NewsApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
             var postList = db.Posts.ToList();
@@ -25,7 +24,6 @@ namespace NewsApplication.Controllers
             {
                 HttpNotFound();
             }
-
             List<SubCategory> subCategories = db.SubCategories.Where(p => p.CategoryId == id).ToList();
             List<Post> categoryPosts = (from p in db.Posts
                                         where p.SubCategory.Any(s => s.CategoryId == id)
@@ -51,6 +49,17 @@ namespace NewsApplication.Controllers
             ViewBag.Posts = Posts;
             return PartialView("_Top_3_Posts");
         }
+
+        [ChildActionOnly]
+        public ActionResult RenderTop3PostsRE(int id)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            List<Post> posts = context.Posts.Where(p => p.SubCategory.Any(s => s.Posts.Any(p1 => p1.PostId == id))).ToList();
+            posts = posts.OrderByDescending(p => p.CreatedAt).Take(3).ToList();
+            ViewBag.Posts = posts;
+            return PartialView("_Top_3_PostsRE");
+        }
+        
         public ActionResult DetailsCategory(int id)
         {
             SubCategory subCategory = db.SubCategories.FirstOrDefault(s => s.SubCategoryId == id);

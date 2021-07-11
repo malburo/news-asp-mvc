@@ -12,7 +12,7 @@ using NewsApplication.Models;
 
 namespace NewsApplication.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Staff")]
+    [Authorize(Roles = "Administrator, Staff")]
     public class UsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

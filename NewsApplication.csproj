@@ -757,6 +757,7 @@
     <Content Include="Content\Images\call-of-duty.jpg" />
     <Content Include="Content\Images\dota.jpg" />
     <Content Include="Content\Images\lol.jpg" />
+    <Content Include="Content\Images\vietgame.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

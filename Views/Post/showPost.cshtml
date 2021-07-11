@@ -11,10 +11,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="content-post col-md-8 col-sm-12">
-      <h2>@Html.Raw(Model.Content)</h2>
+    <div class="content-post col-md-8">
+      @Html.Raw(Model.Content)
     </div>
-    <div class="content-post content-post-sm col-md-4">
+    <div class="content-post col-md-4 position-sticky">
       @{ Html.RenderAction("rate3PostPartial", "Post"); }
       @{ Html.RenderAction("new3PostPartial", "Post"); }
     </div>

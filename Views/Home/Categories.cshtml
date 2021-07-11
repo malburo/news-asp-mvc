@@ -15,7 +15,7 @@
           <div class="smallblock newscard">
             <div class="img-container">
               <img src="@post.ImageUrl" alt="" />
-            </div>
+            </div>z
             <div class="small-block-content-container">
               <div class="small-block-content">
                 @foreach (var subCate in post.SubCategory)
@@ -35,7 +35,7 @@
                   </div>
                 </div>
                 <div class="col-lg-4">
-                  <a class="bookmark-btn" href="#">
+                  <a data-post-id="@post.PostId" class="bookmark-btn" href="#">
                     <i class="fa fa-bookmark" aria-hidden="true">
                       Save
                     </i>

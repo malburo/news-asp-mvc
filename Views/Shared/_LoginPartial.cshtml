@@ -15,18 +15,12 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
           <li><a class="dropdown-item" href="#">My Bookmark</a></li>
-          <li><a class="dropdown-item" href="#">Setting</a></li>
+          <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal">Setting</a></li>
           <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
         </ul>
       </li>
     </ul>
   }
-  <button type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -47,7 +41,6 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn_purple">Save changes</button>
         </div>
       </div>
     </div>
@@ -56,6 +49,14 @@
     $(function () {
       $(".modal-content").on("click", ".tags-item", e => {
         const action = e.target.getAttribute("data-action");
+        if (action === "UpdateUser") {
+          $("a[data-action=UpdateUser]").addClass("active")
+          $("a[data-action=ChangePassword]").removeClass("active")
+        } 
+        if (action === "ChangePassword") {
+          $("a[data-action=UpdateUser]").removeClass("active")
+          $("a[data-action=ChangePassword]").addClass("active")
+        } 
         $.get(`/Account/${action}`, function (data) {
           $('#modal-content').html(data);
         });

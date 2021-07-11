@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace NewsApplication.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Staff")]
+    [Authorize(Roles = "Administrator, Staff")]
     public class HomeController : Controller
     {
         // GET: Admin/Home

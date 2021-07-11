@@ -141,7 +141,7 @@ a {
   margin: 0px;
 }
 
-.btn {
+.login__form .btn, .profile__form .btn {
   height: 50px;
   border-radius: 10px;
   font-size: 14px;
@@ -153,52 +153,56 @@ a {
   margin-top: 16px;
 }
 
-.btn_purple {
+.login__form .btn_purple {
   background: #6c5dd3;
   color: white;
   border: none;
 }
 
-.btn_purple:hover {
+.login__form .btn_purple:hover {
   background: #5f4ed1;
   color: white;
 }
 
-.btn_gray {
+.login__form .btn_gray, .profile__form .btn_gray {
   background: rgba(228, 228, 228, 0.1);
   color: #ffffff;
 }
 
-  .btn_gray:hover {
-    background: rgba(148, 93, 93, 0.1);
-    color: #ffffff;
-  }
+.login__form .btn_gray:hover, .profile__form .btn_gray:hover {
+  background: rgba(148, 93, 93, 0.1);
+  color: #ffffff;
+}
 
-.is-invalid {
+.login__form .is-invalid, .profile__form .is-invalid {
   border: 1px solid rgb(201, 42, 42);
 }
 
 /*profile__form*/
 .modal-header {
-  border-bottom: 0;
+  border-bottom: 0 !important;
 }
 
 .modal-footer {
-  border-top: 0;
+  border-top: 0 !important;
 }
 
 .profile__modal {
-  background-color: #242731;
+  background-color: #242731 !important;
   color: white;
   padding: 24px;
-  border-radius: 24px;
+  border-radius: 24px !important;
   min-width: 600px;
 }
 
-  .profile__modal hr {
-    background: rgba(228,228,228,0.46);
-    margin: 24px 0px;
-  }
+.profile__modal a {
+  text-decoration: none;
+}
+
+.profile__modal hr {
+  background: rgba(228,228,228,0.46);
+  margin: 24px 0px;
+}
 
 .tags {
   margin: 12px 0px 36px 0px;
@@ -218,6 +222,7 @@ a {
 .tags .active {
   background: #6c5dd3;
   border-color: #6c5dd3;
+  color: white;
 }
 
 .profile__form textarea {
@@ -230,15 +235,32 @@ a {
   padding: 24px;
 }
 
-  .profile__form textarea:focus {
-    border: none;
-    outline: none !important;
-    box-shadow: 0 0 0 0.1rem #6c5dd3;
-  }
+.profile__form .input-field, .profile__form input[type="password"] {
+  border-radius: 8px !important;
+  height: 50px;
+  padding: 0 16px !important;
+  color: #ffffff !important;
+  background: rgba(228, 228, 228, 0.05) !important;
+  border: 1px solid rgba(228, 228, 228, 0.05) !important;
+  margin-bottom: 4px;
+  display: block !important;
+  width: 100% !important;
+}
+.profile__form .btn_purple {
+  background: #6c5dd3 !important;
+  color: white !important;
+  border: none !important;
+  margin-top: 24px;
+}
+.profile__form textarea:focus {
+  border: none;
+  outline: none !important;
+  box-shadow: 0 0 0 0.1rem #6c5dd3;
+}
 
-  .profile__form textarea:focus-visible {
-    outline: none !important;
-  }
+.profile__form textarea:focus-visible {
+  outline: none !important;
+}
 
 .avatar__form img {
   width: 80px;

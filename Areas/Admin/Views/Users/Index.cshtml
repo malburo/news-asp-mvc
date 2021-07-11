@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NewsApplication.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>Account</h3>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i> Users
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        User's Name
+                    </th>
+                    <th>
+                        Roles
+                    </th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        User's Name
+                    </th>
+                    <th>
+                        Roles
+                    </th>
+                    <th>Edit</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-md-2">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td class="col-md-2">
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td class="col-md-6">
+                            @{
+                                Html.RenderAction("RenderRoles", "Users", new { id = item.Id });
+                            }
+                        </td>
+                        <td class="col-md-2">
+                            <button class="btn btn-primary" style="margin-right: 5px;">@Html.ActionLink("Edit", "Edit", "Users", new { id = item.Id }, new { @class = "text-white text-decoration-none" }) </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

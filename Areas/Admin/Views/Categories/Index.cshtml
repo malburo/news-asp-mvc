@@ -8,32 +8,66 @@
 <h2>Category</h2>
 
 <p>
-    <button class="btn btn-primary"> @Html.ActionLink("Create New", "Create", null, new { @class = "text-white text-decoration-none" })</button>
+    <button class="btn btn-primary"> @Html.ActionLink("Create new", "Create", null, new { @class = "text-white text-decoration-none" })</button>
+    <button class="btn btn-primary"> @Html.ActionLink("Create new Sub", "Create", "SubCategories", null, new { @class = "text-white text-decoration-none" })</button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th></th>
-    </tr>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i> Category
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Color)
+                    </th>
+                    <th>
+                        Sub Categories
+                    </th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Color)
+                    </th>
+                    <th>
+                        Sub Categories
+                    </th>
+                    <th>Edit</th>
+                </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            <button class="btn btn-primary">@Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
-            <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
-        </td>
-    </tr>
-}
-
-</table>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-md-2">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="col-md-2">
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                        <td class="col-md-6">
+                            @{
+                                Html.RenderAction("RenderSubMenu", "Categories", new { id = item.CategoryId });
+                            }
+                        </td>
+                        <td class="col-md-2">
+                            <button class="btn btn-primary">@Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
+                            <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

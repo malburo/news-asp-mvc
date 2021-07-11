@@ -1,83 +1,82 @@
 ﻿@model NewsApplication.Models.Post
+<pages validataRequest="false"/>
+    @{
+        ViewBag.Title = "Edit";
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    }
 
-@{
-    ViewBag.Title = "Edit";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-}
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal pt-2">
-    <h4>@Html.ActionLink("Post", "Index", null, new { @class = "text-primary text-decoration-none"}) - Edit</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.PostId)
-
-    <div class="form-group pt-2">
-        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group pt-2 d-flex flex-wrap flex-column">
-        <label class="control-label col-md-2 pb-2">Category</label>
-        <div class="col-md-10">
-
-            @if (ViewBag.subcategory_post != null)
-            {
-                foreach (var sub in ViewBag.subcategory)
-                {
-                    int i = 0;
-                    foreach (var subcategory in ViewBag.subcategory_post)
+        <div class="form-horizontal pt-2">
+            <h4>@Html.ActionLink("Post", "Index", null, new { @class = "text-primary text-decoration-none" }) - Edit</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.PostId)
+            <div class="form-group pt-2">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group pt-2 d-flex flex-wrap flex-column">
+                <label class="control-label col-md-2 pb-2">Category</label>
+                <div class="col-md-10">
+                    @if (ViewBag.subcategory_post != null)
                     {
-                        if (subcategory.SubCategoryId == sub.SubCategoryId)
+                        foreach (var sub in ViewBag.subcategory)
                         {
-                            i++;
-                            <input class="form-check-input" name="SubCategory" checked value="@sub.SubCategoryId" type="checkbox" id="SubCategory">
-                            <label class="form-check-label" for="sub_category_id" style="margin-right: 10px;">
-                                @sub.Name
-                            </label>
+                            int i = 0;
+                            foreach (var subcategory in ViewBag.subcategory_post)
+                            {
+                                if (subcategory.SubCategoryId == sub.SubCategoryId)
+                                {
+                                    i++;
+                                    <input class="form-check-input" name="SubCategory" checked value="@sub.SubCategoryId" type="checkbox" id="SubCategory">
+                                    <label class="form-check-label" for="sub_category_id" style="margin-right: 10px;">
+                                        @sub.Name
+                                    </label>
+                                }
+                            }
+                            if (i == 0)
+                            {
+                                <input class="form-check-input" name="SubCategory" value="@sub.SubCategoryId" type="checkbox" id="SubCategory">
+                                <label class="form-check-label" for="sub_category_id" style="margin-right: 10px;">
+                                    @sub.Name
+                                </label>
+                            }
                         }
+
                     }
-                    if (i == 0)
-                    {
-                        <input class="form-check-input" name="SubCategory" value="@sub.SubCategoryId" type="checkbox" id="SubCategory">
-                        <label class="form-check-label" for="sub_category_id" style="margin-right: 10px;">
-                            @sub.Name
-                        </label>
-                    }
-                }
+                    <p class="text-danger">@ViewBag.error</p>
+                </div>
+            </div>
+            <div class="form-group pt-2">
+                @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-            }
-            <p class="text-danger">@ViewBag.error</p>
+            <div class="form-group pt-2">
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    <textarea name="Content" id="editor" class="form-control">@Html.DisplayFor(model => model.Content)</textarea>
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group pt-2">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group pt-2">
-        @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    }
 
-    <div class="form-group pt-2">
-        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-12">
-            <textarea name="Content" id="editor" class="form-control"></textarea>
-            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-        </div>
+    <div class="pt-2">
+         
+        <button class="btn btn-primary">@Html.ActionLink("Back to List", "Index", null, new { @class = "text-white text-decoration-none" })</button>
     </div>
-    <div class="form-group pt-2">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-    </div>
-</div>
-}
-
-<div class="pt-2">
-    <button class="btn btn-primary">@Html.ActionLink("Back to List", "Index", null, new { @class = "text-white text-decoration-none"})</button>
-</div>

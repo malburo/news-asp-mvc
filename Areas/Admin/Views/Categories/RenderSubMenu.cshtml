@@ -1,0 +1,8 @@
+﻿<div class="d-flex flex-wrap">
+    @foreach (var item in ViewBag.SubCategory)
+    {
+        <button class="btn btn-primary m-1" style="padding: 5px 5px;">
+            <a class="text-decoration-none text-white" href="@Url.Action("Edit", "SubCategories", new { id = item.SubCategoryId })">@item.Name</a>
+        </button>
+    }
+</div>

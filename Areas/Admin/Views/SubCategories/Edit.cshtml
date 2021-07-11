@@ -5,14 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>SubCategory</h4>
+        <h4> @Html.ActionLink("Category", "Index", "Categories", "", new { @class = "text-decoration-none" }) - Edit </h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.SubCategoryId)
@@ -33,14 +32,15 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group pt-2 pb-2">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button class="btn btn-primary" type="submit">Save</button>
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-primary">  @Html.ActionLink("Back to List", "Index", "Categories", "", new { @class = "text-white text-decoration-none" })</button>
+    <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = Html.DisplayFor(model => model.SubCategoryId) }, new { @class = "text-white text-decoration-none" }) </button>
 </div>

@@ -2,17 +2,16 @@
 using Microsoft.AspNet.Identity.Owin;
 using NewsApplication.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+
 using System.Web;
 using System.Web.Mvc;
 
 namespace NewsApplication.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Staff")]
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -84,6 +83,7 @@ namespace NewsApplication.Areas.Admin.Controllers
             return View(post);
         }
 
+        [ValidateInput(false)]
         // GET: Admin/Posts/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -109,6 +109,7 @@ namespace NewsApplication.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int? id, int[] SubCategory)
         {
+            
             Post post = db.Posts.Find(id);
             if (SubCategory == null)
             {

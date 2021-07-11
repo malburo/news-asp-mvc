@@ -10,6 +10,7 @@ using NewsApplication.Models;
 
 namespace NewsApplication.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class SubCategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -54,7 +55,7 @@ namespace NewsApplication.Areas.Admin.Controllers
             {
                 db.SubCategories.Add(subCategory);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Categories");
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", subCategory.CategoryId);
@@ -88,7 +89,7 @@ namespace NewsApplication.Areas.Admin.Controllers
             {
                 db.Entry(subCategory).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Categories");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", subCategory.CategoryId);
             return View(subCategory);
@@ -117,7 +118,7 @@ namespace NewsApplication.Areas.Admin.Controllers
             SubCategory subCategory = db.SubCategories.Find(id);
             db.SubCategories.Remove(subCategory);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Categories");
         }
 
         protected override void Dispose(bool disposing)

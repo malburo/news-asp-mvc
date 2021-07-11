@@ -10,6 +10,7 @@ using NewsApplication.Models;
 
 namespace NewsApplication.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class CategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -122,6 +123,13 @@ namespace NewsApplication.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [ChildActionOnly]
+        public  ActionResult RenderSubMenu(int? id)
+        {
+            ViewBag.SubCategory = db.SubCategories.Where(x => x.CategoryId == id);
+            return PartialView("RenderSubMenu");
         }
     }
 }

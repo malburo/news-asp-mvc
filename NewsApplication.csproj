@@ -904,6 +904,10 @@
     <Content Include="Views\Comment\_CommentPartial.cshtml" />
     <Content Include="Views\Account\_UpdateUserPartial.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Post\Search.cshtml" />
+    <Content Include="Views\Post\_new3PostPartial.cshtml" />
+    <Content Include="Views\Post\_rate3postPartial.cshtml" />
+    <Content Include="Views\Post\_relatedPostPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

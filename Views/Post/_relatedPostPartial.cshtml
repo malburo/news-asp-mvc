@@ -1,0 +1,25 @@
+﻿<div class="row">
+  <div class="related pt-3 col-md-12 col-sm-12">
+    <h2 style="font-size: 25px;">Bài liên quan</h2>
+    <div class="related-posts col-sm-12 w-100">
+      @foreach (var post in ViewBag.Posts)
+      {
+        <article class="">
+          <a href="" class="w-100">
+            <img src="@post.ImageUrl" style="max-width: 100%;" alt="">
+          </a>
+          <div class="related-post-tag pt-2">
+            <a class="btn btn-dark text-capitalize" href="">Tin Game</a>
+            <a class="btn btn-danger text-capitalize" href="">Tin Game</a>
+          </div>
+          <div class="related-post-title">
+            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@post.Title</h2>
+            <p>
+              <span>@post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi <a class="" href="">@post.Views</a>
+            </p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</div>

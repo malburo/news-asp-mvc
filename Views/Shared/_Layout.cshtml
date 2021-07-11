@@ -165,6 +165,14 @@
             <a href="/Home/Categories/4 " class="nav-item nav-link ">Gadgets</a>
             <a href="/Home/Categories/5 " class="nav-item nav-link ">E3 2021</a>
           </div>
+          <form class="form-inline mr-2" action="/Post/Search" method="get">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" name="searchString">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </form>
           @Html.Partial("_LoginPartial")
         </div>
       </nav>

@@ -1,0 +1,19 @@
+﻿<div class="content-post__related">
+  <h3 class="font-weight-bold" style="font-size: 20px m !important;">
+    Bài mới nhất
+  </h3>
+  @foreach (var post in ViewBag.post)
+  {
+    <article class="rating-image position-relative">
+      <img src="@post.ImageUrl" alt="banner-game" style="max-width: 100%;">
+      <a href="/Post/showPost/@post.PostId" class="position-absolute btn btn-primary">3.5</a>
+    </article>
+    <div class="articles">
+      <article>
+        <h3>
+          <a href="/Post/showPost/@post.PostId">@post.Title</a>
+        </h3>
+      </article>
+    </div>
+  }
+</div>

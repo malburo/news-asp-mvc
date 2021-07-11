@@ -1,4 +1,5 @@
-﻿using NewsApplication.Models;
+﻿using Microsoft.AspNet.Identity;
+using NewsApplication.Models;
 using NewsApplication.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,15 +11,15 @@ namespace NewsApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            var postList = db.Posts.ToList();
+            return View(postList);
         }
 
         public ActionResult Categories(int id)
         {
-
-            ApplicationDbContext db = new ApplicationDbContext();
             Category category = db.Categories.FirstOrDefault(p => p.CategoryId == id);
             if (category == null)
             {
@@ -43,7 +44,6 @@ namespace NewsApplication.Controllers
         [ChildActionOnly]
         public ActionResult RenderTop3Posts(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             List<Post> Posts = (from p in db.Posts
                                 where p.SubCategory.Any(s => s.SubCategoryId == id)
                                 orderby p.CreatedAt descending
@@ -53,7 +53,6 @@ namespace NewsApplication.Controllers
         }
         public ActionResult DetailsCategory(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             SubCategory subCategory = db.SubCategories.FirstOrDefault(s => s.SubCategoryId == id);
             if (subCategory == null)
             {

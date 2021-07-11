@@ -1,6 +1,6 @@
 ﻿@model NewsApplication.Models.Post
 @{ ViewBag.Title = "Details";
-        Layout = "~/Views/Shared/_Layout.cshtml"; }
+  Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
 <!-- Start main -->
@@ -63,79 +63,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="content-comment-title col-md-12">
-      <h2 class="font-weight-bold" style="font-size: 20px;">Thảo Luận</h2>
-      <div class="d-flex justify-content-between pb-3">
-        <strong><span>1</span> bình luận</strong>
-        <div>
-          <span>Sắp xếp theo</span>
-          <select class="form-select font-weight-bold" style="color: gray;" aria-label="Default select example">
-            <option selected value="1">Mới nhất</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
-      </div>
-      <hr class="w-100">
-      <div class="content-comment-details">
-        <div class="content-comment-details__comment">
-          <div class="d-flex mb-3 w-100">
-            <div class="">
-              <img class="" src="https://www.facebook.com/rsrc.php/v1/yi/r/odA9sNLrE86.jpg" alt="" style="max-width: 100px; padding-right: 10px;">
-            </div>
-            <div class="w-100">
-              <textarea name="" class="w-100" id="" cols="30" rows="2"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="content-comment-details__show">
-          <div class="parent-comment d-flex align-text-top">
-            <div>
-              <img class="" src="https://www.facebook.com/rsrc.php/v1/yi/r/odA9sNLrE86.jpg" alt="" style="max-width: 100px; padding-right: 10px;">
-            </div>
-            <div>
-              <span class="">
-                <a href="#">Joh Nguyen</a>
-              </span>
-              <p class="">
-                PlayStation 5, Xbox Series X/S trong mùa lễ năm nay.PlayStation 5, Xbox Series X/S trong mùa lễ năm nay.PlayStation PlayStation 5, Xbox Series X/S trong mùa lễ năm nay.PlayStation
-              </p>
-              <div style="margin-top: -18px;">
-                <a class="text-decoration-none" href="">
-                  <i class="far fa-thumbs-up"></i>
-                </a>
-                <a class="text-decoration-none" href="">
-                  Phản hồi
-                </a>
-              </div>
-
-            </div>
-          </div>
-          <div class="mt-2 child-comment d-flex align-text-top" style="margin-left: 60px !important">
-            <div>
-              <img class="" src="https://www.facebook.com/rsrc.php/v1/yi/r/odA9sNLrE86.jpg" alt="" style="max-width: 50px; padding-right: 10px;">
-            </div>
-            <div>
-              <span class="">
-                <a href="#" class="">Joh Nguyen</a>
-              </span>
-              <p class="" style="font-size: 14px;">
-                PlayStation 5, Xbox Series X/S trong mùa lễ năm nay.PlayStation 5, Xbox Series X/S trong mùa lễ năm nay.PlayStation PlayStation 5, Xbox Series X/S trong mùa lễ năm nay.PlayStation
-              </p>
-              <div style="margin-top: -18px;">
-                <a class="text-decoration-none" href="">
-                  <i class="far fa-thumbs-up" style="font-size: 14px;"></i>
-                </a>
-                <a class="text-decoration-none" href="" style="font-size: 14px;">
-                  Phản hồi
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    @{ Html.RenderAction("Index", "Comment", new { Id = 1 }); }
   </div>
 
   <div class="row">
@@ -193,6 +121,90 @@
       </div>
     </div>
   </div>
-
 </div>
 <!-- End main -->
+@section scripts
+  {
+  <script>
+    const renderComment = (data) => `
+          <div class="comment">
+            <div class="wrapper">
+              <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4YZrIgIF--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/295794/d80091f7-b567-46fd-ac94-fc0b79fb4ee2.jpeg" alt="" width="24" height="24">
+              <div class="comment-body">
+                <div class="username">${data.UserId}</div>
+                <div class="content">${data.Content}</div>
+              </div>
+              <button data-comment-id="${data.CommentId}" class="reply">Reply</button>
+            </div>
+          </div>
+          <div class="wrapper-sub-comment">
+            <div class="sub-comment-list" data-comment-id="${data.CommentId}">
+            </div>
+            <div class="sub-comment-form hide" data-comment-id="${data.CommentId}">
+              <textarea id="content-sub-comment" name="subComent" rows="5" placeholder="Reply..."></textarea>
+              <button id="add-sub-comment" data-comment-id="${data.CommentId}">save</button>
+            </div>
+          </div>
+        `
+    const renderSubComment = (data) => `
+          <div class="sub-comment" data-comment-id="${data.CommentId}">
+            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4YZrIgIF--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/295794/d80091f7-b567-46fd-ac94-fc0b79fb4ee2.jpeg" alt="" width="24" height="24">
+            <div class="sub-comment-body">
+              <div class="username">thegioicuabao</div>
+              <div class="content">${data.Content}</div>
+            </div>
+          </div>
+        `
+    // handle click reply
+    $(".comment-list").on("click", ".reply", e => {
+      var button = $(e.target);
+      var id = button.attr("data-comment-id");
+      $(`.sub-comment-form[data-comment-id=${id}]`).toggle();
+    })
+
+    // handle add new comment
+    $(".discussion").on("click", "#add-comment", e => {
+      const button = $(e.target);
+      const id = button.attr("data-post-id");
+      const content = $("#content-comment").val();
+      const payload = { postId: id, content: content }
+      $.ajax({
+        url: "/Comment/CreateComment",
+        dataType: "json",
+        type: "POST",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(payload),
+        success: function (response) {
+          const commentElement = renderComment(response.data);
+          $(".comment-list").prepend(commentElement)
+        },
+        error: function (xhr) {
+          console.log('error');
+        }
+      });
+    })
+
+    //  handle add new subcomment
+    $(".discussion").on("click", "#add-sub-comment", e => {
+      var button = $(e.target);
+      const id = button.attr("data-comment-id");
+      const content = $("#content-sub-comment").val();
+      const payload = { commentId: id, content: content }
+      $.ajax({
+        url: "/Comment/CreateSubComment",
+        dataType: "json",
+        type: "POST",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(payload),
+        success: function (response) {
+          const subCommentElement = renderSubComment(response.data);
+          $(`.sub-comment-list[data-comment-id=${response.data.CommentId}]`).append(subCommentElement)
+        },
+        error: function (xhr) {
+          console.log('error');
+        }
+      });
+    })
+  </script>
+}
+@Scripts.Render("~/bundles/jqueryval")

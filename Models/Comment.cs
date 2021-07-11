@@ -23,7 +23,7 @@ namespace NewsApplication.Models
         public DateTime UpdatedAt { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; } 
 
         [ForeignKey("PostId")]
         public virtual Post Post { get; set; }

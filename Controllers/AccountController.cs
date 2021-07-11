@@ -22,7 +22,7 @@ namespace NewsApplication.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +34,9 @@ namespace NewsApplication.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -120,7 +120,7 @@ namespace NewsApplication.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -151,12 +151,12 @@ namespace NewsApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, AvatarUrl = "https://avatars.dicebear.com/api/identicon/" + model.Email + ".svg", Name = model.Name };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -232,9 +232,9 @@ namespace NewsApplication.Controllers
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
+        public ActionResult ResetPassword()
         {
-            return code == null ? View("Error") : View();
+            return PartialView("_ResetPasswordPartial");
         }
 
         //
@@ -395,6 +395,42 @@ namespace NewsApplication.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult UpdateUser()
+        {
+            var UserId = User.Identity.GetUserId();
+            var user = UserManager.FindById(UserId);
+            var updateUser = new UpdateUserViewModel { AvatarUrl = user.AvatarUrl, Email = user.Email, Name = user.Name };
+            return PartialView("_UpdateUserPartial", updateUser);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UpdateUserInfo(UpdateUserViewModel model)
+        {
+            var UserId = User.Identity.GetUserId();
+            var user = UserManager.FindById(UserId);
+
+            // Update it with the values from the view model
+            user.Name = model.Name;
+            user.AvatarUrl = model.AvatarUrl;
+            var result = await UserManager.UpdateAsync(user);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return PartialView("_ChangePasswordPartial");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            var UserId = User.Identity.GetUserId();
+            var result = await UserManager.ChangePasswordAsync(UserId, model.OldPassword, model.NewPassword);
+
+            return RedirectToAction("Index", "Home");
+        }
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]

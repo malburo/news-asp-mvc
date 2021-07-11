@@ -1,0 +1,45 @@
+﻿@model IEnumerable<NewsApplication.Models.Bookmark>
+
+@{
+    ViewBag.Title = "Bookmark";
+}
+
+<h2>Bookmark</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Post.AuthorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Post.AuthorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateAt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookmarkId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BookmarkId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BookmarkId })
+        </td>
+    </tr>
+}
+
+</table>

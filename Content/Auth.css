@@ -26,16 +26,16 @@ a {
   background-position: 50% 50%;
 }
 
-  .login::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: -webkit-linear-gradient( 148.37deg, rgba(58, 62, 69, 0.0001) 29.5%, rgba(27, 29, 33, 0.707195) 74.66% );
-    z-index: 0;
-  }
+.login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient( 148.37deg, rgba(58, 62, 69, 0.0001) 29.5%, rgba(27, 29, 33, 0.707195) 74.66% );
+  z-index: 0;
+}
 
 .login__wrapper {
   position: relative;
@@ -49,17 +49,17 @@ a {
   margin-top: 10px;
 }
 
-  .login__left .login__logo {
-    font-size: 50px;
-    font-weight: 600;
-    color: #ffffff;
-  }
+.login__left .login__logo {
+  font-size: 50px;
+  font-weight: 600;
+  color: #ffffff;
+}
 
-  .login__left .login__info {
-    font-weight: 700;
-    font-size: 16px;
-    margin: 12px 0px 36px 0px;
-  }
+.login__left .login__info {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 12px 0px 36px 0px;
+}
 
 .games .games__items {
   display: flex;
@@ -71,12 +71,12 @@ a {
   max-width: 220px;
 }
 
-  .games .games__items .game__cover {
-    height: 100px;
-    width: 72px;
-    object-fit: cover;
-    border-radius: 12px;
-  }
+.games .games__items .game__cover {
+  height: 100px;
+  width: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+}
 
 .game__detail .game__title {
   font-size: 13px;
@@ -98,11 +98,11 @@ a {
   margin-left: auto;
 }
 
-  .login__form .title {
-    font-size: 40px;
-    font-weight: 600;
-    letter-spacing: -1px;
-  }
+.login__form .title {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
 
 .login__line {
   margin: 12px 0px 36px 0px;
@@ -123,33 +123,34 @@ a {
 
 .input-field {
   border-radius: 8px;
-  height: 56px;
-  padding: 0 22px;
+  height: 50px;
+  padding: 0 16px;
   color: #ffffff;
   background: rgba(228, 228, 228, 0.05);
   border: 1px solid rgba(228, 228, 228, 0.05);
-  margin-bottom: 24px;
+  margin-bottom: 4px;
 }
 
-  .input-field:focus {
-    background: rgba(228, 228, 228, 0.05);
-    color: #ffffff;
-    box-shadow: 0 0 0 0.1rem #6c5dd3;
-  }
+.input-field:focus {
+  background: rgba(228, 228, 228, 0.05);
+  color: #ffffff;
+  box-shadow: 0 0 0 0.1rem #6c5dd3;
+}
 
 .label {
-  margin: 12px 0px;
+  margin: 0px;
 }
 
 .btn {
-  height: 56px;
-  border-radius: 16px;
+  height: 50px;
+  border-radius: 10px;
   font-size: 14px;
   font-weight: 700;
   padding: 0px 20px;
   font-size: 14px;
   font-weight: 700;
   min-width: 160px;
+  margin-top: 16px;
 }
 
 .btn_purple {
@@ -158,10 +159,10 @@ a {
   border: none;
 }
 
-  .btn_purple:hover {
-    background: #5f4ed1;
-    color: white;
-  }
+.btn_purple:hover {
+  background: #5f4ed1;
+  color: white;
+}
 
 .btn_gray {
   background: rgba(228, 228, 228, 0.1);
@@ -203,21 +204,21 @@ a {
   margin: 12px 0px 36px 0px;
 }
 
-  .tags a {
-    margin-right: 12px;
-    border: 2px solid #ff754c;
-    border-radius: 12px;
-    padding: 6px 16px;
-    line-height: 1.42857;
-    font-weight: 600;
-    color: white;
-  }
+.tags a {
+  margin-right: 12px;
+  border: 2px solid #ff754c;
+  border-radius: 12px;
+  padding: 6px 16px;
+  line-height: 1.42857;
+  font-weight: 600;
+  color: white;
+}
 
-    .tags a:hover,
-    .tags .active {
-      background: #6c5dd3;
-      border-color: #6c5dd3;
-    }
+.tags a:hover,
+.tags .active {
+  background: #6c5dd3;
+  border-color: #6c5dd3;
+}
 
 .profile__form textarea {
   display: block;

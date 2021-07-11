@@ -1,0 +1,43 @@
+﻿@model IEnumerable<NewsApplication.Models.Comment>
+<link href="~/Content/Comment.css" rel="stylesheet" />
+<div class="discussion">
+  <div class="comment-form">
+    <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4YZrIgIF--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/295794/d80091f7-b567-46fd-ac94-fc0b79fb4ee2.jpeg" alt="" width="24" height="24">
+    <textarea id="content-comment" name="comment" rows="5" placeholder="Comment something..."></textarea>
+    <button id="add-comment" data-post-id="1">save</button>
+  </div>
+  <div class="comment-list">
+    @foreach (var comment in Model)
+    {
+      <div class="comment">
+        <div class="wrapper">
+          <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4YZrIgIF--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/295794/d80091f7-b567-46fd-ac94-fc0b79fb4ee2.jpeg" alt="" width="24" height="24">
+          <div class="comment-body">
+            <div class="username">@comment.User.Name</div>
+            <div class="content">@comment.Content</div>
+          </div>
+          <button data-comment-id="@comment.CommentId" class="reply">Reply</button>
+        </div>
+      </div>
+      <div class="wrapper-sub-comment">
+        <div class="sub-comment-list" data-comment-id="@comment.CommentId">
+          @foreach (var subComment in comment.SubComment.ToList())
+          {
+            <div class="sub-comment" data-comment-id="@comment.CommentId">
+              <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4YZrIgIF--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/295794/d80091f7-b567-46fd-ac94-fc0b79fb4ee2.jpeg" alt="" width="24" height="24">
+              <div class="sub-comment-body">
+                <div class="username">@subComment.User.Name</div>
+                <div class="content">@subComment.Content</div>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="sub-comment-form hide" data-comment-id="@comment.CommentId">
+          <textarea id="content-sub-comment" name="subComent" rows="5" placeholder="Reply..."></textarea>
+          <button id="add-sub-comment" data-comment-id="@comment.CommentId">save</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+

@@ -59,12 +59,12 @@
             <p class="login__text my-3">Email Address</p>
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-field" })
             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            <p class="login__text my-3">Fullname</p>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-field" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
             <p class="login__text my-3">Password</p>
             @Html.PasswordFor(m => m.Password, new { @class = "form-control input-field" })
             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-
-            <p class="login__text my-3">Comfirm Password</p>
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control input-field" })
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <input type="submit" value="Continue" class="btn w-100 btn_purple" />

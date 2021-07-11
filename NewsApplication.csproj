@@ -58,6 +58,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -66,6 +69,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -169,6 +178,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -176,6 +186,8 @@
     <Compile Include="Areas\Admin\Controllers\SubCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookmarkController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -185,6 +197,10 @@
     <Compile Include="Migrations\202106271952214_version 1.0.cs" />
     <Compile Include="Migrations\202106271952214_version 1.0.Designer.cs">
       <DependentUpon>202106271952214_version 1.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107101925434_version 1.1.cs" />
+    <Compile Include="Migrations\202107101925434_version 1.1.Designer.cs">
+      <DependentUpon>202107101925434_version 1.1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -736,6 +752,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Comment.css" />
     <Content Include="Content\Images\bg-sign-in.png" />
     <Content Include="Content\Images\call-of-duty.jpg" />
     <Content Include="Content\Images\dota.jpg" />
@@ -883,6 +900,10 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Post\showPost.cshtml" />
     <Content Include="Views\Shared\_Top_3_Posts.cshtml" />
+    <Content Include="Views\Bookmark\Bookmark.cshtml" />
+    <Content Include="Views\Comment\_CommentPartial.cshtml" />
+    <Content Include="Views\Account\_UpdateUserPartial.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -898,6 +919,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202106271952214_version 1.0.resx">
       <DependentUpon>202106271952214_version 1.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107101925434_version 1.1.resx">
+      <DependentUpon>202107101925434_version 1.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

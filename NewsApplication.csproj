@@ -756,6 +756,7 @@
     <Content Include="Content\Images\bg-sign-in.png" />
     <Content Include="Content\Images\call-of-duty.jpg" />
     <Content Include="Content\Images\dota.jpg" />
+    <Content Include="Content\Images\reply-icon.svg" />
     <Content Include="Content\Images\lol.jpg" />
     <Content Include="Content\Images\vietgame.png" />
     <Content Include="favicon.ico" />
@@ -809,6 +810,13 @@
     <Content Include="Areas\Admin\Views\SubCategories\Details.cshtml" />
     <Content Include="Areas\Admin\Views\SubCategories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SubCategories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\RenderSubMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\RenderRoles.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Content\Admin\node_modules\ckeditor4\bower.json" />
     <Content Include="Content\Admin\node_modules\ckeditor4\CHANGES.md" />
     <Content Include="Content\Admin\node_modules\ckeditor4\composer.json" />
@@ -844,13 +852,6 @@
     <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Content\Admin\node_modules\ckeditor4\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Content\Admin\node_modules\ckeditor4\skins\moono-lisa\readme.md" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\RenderSubMenu.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\RenderRoles.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -901,7 +902,6 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Post\showPost.cshtml" />
     <Content Include="Views\Shared\_Top_3_Posts.cshtml" />
-    <Content Include="Views\Bookmark\Bookmark.cshtml" />
     <Content Include="Views\Comment\_CommentPartial.cshtml" />
     <Content Include="Views\Account\_UpdateUserPartial.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
@@ -909,6 +909,7 @@
     <Content Include="Views\Post\_new3PostPartial.cshtml" />
     <Content Include="Views\Post\_rate3postPartial.cshtml" />
     <Content Include="Views\Post\_relatedPostPartial.cshtml" />
+    <Content Include="Views\Bookmark\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,29 +4,56 @@
 <!-- Start main -->
 <div class="container">
   <div class="row">
-    <div class="col-md-12 header-post w-100">
-      <a href="#" class="header-post-tag btn">Tin game</a>
-      <h2 class="font-weight-bold" style="font-size: 30px;">@Html.Raw(Model.Title)</h2>
-      <p><span>05/06/2021</span> bởi <span> <a href="#">Mr. John</a></span></p>
+    <div class="col">
+      <div class="row">
+        <div class="header-post w-100 p-4 bg-light">
+          @foreach (var subCategory in Model.SubCategory.ToList())
+          {
+            <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
+          }
+          <h2 class="font-weight-bold" style="font-size: 30px; margin-top:24px">@Html.Raw(Model.Title)</h2>
+          <p><span>@Model.CreatedAt.ToString("dd/MM/yyyy")</span> bởi <span> <a href="#">@Model.Author.Name</a></span></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 p-4 bg-light overflow-hidden">
+          <div class="row">
+            <img src="@Model.ImageUrl" alt="cover" style="width:100%; height:400px; object-fit: cover; margin-bottom: 24px; margin-left: 16px " />
+          </div>
+          <div class="content-post">
+            @Html.Raw(Model.Content)
+          </div>
+          <hr />
+          <div class="row bg-light p-4" style="margin-top: 24px">
+            <h4 style="font-weight: 600;">Thảo luận</h4>
+          </div>
+          @if (Request.IsAuthenticated)
+          {
+            <div class="row p-4 ">
+              @{ Html.RenderAction("Index", "Comment"); }
+            </div>
+          }
+          else 
+          {
+            <div class="row p-4 ">
+              <p>Hãy <a href="/account/login">đăng nhập</a> để bình luận :D</p>
+            </div>
+          }
+        </div>
+        <div class="col-4 p-4 bg-light">
+          <div class="content-post position-sticky">
+            @{ Html.RenderAction("rate3PostPartial", "Post"); }
+            @{ Html.RenderAction("new3PostPartial", "Post"); }
+          </div>
+        </div>
+      </div>
+      <div class="row bg-light p-4" style="margin-top: 24px">
+        <h2 style="font-weight: 600;">Bài viết liên quan</h2>
+      </div>
+      <div class="row bg-light p-4">
+        @{ Html.RenderAction("relatedPostPartial", "Post"); }
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="content-post col-md-8">
-      @Html.Raw(Model.Content)
-    </div>
-    <div class="content-post col-md-4 position-sticky">
-      @{ Html.RenderAction("rate3PostPartial", "Post"); }
-      @{ Html.RenderAction("new3PostPartial", "Post"); }
-    </div>
-  </div>
-  <div class="row">
-    @{ Html.RenderAction("Index", "Comment", new { Id = 1 }); }
-  </div>
-
-  <div class="row">
-    @{
-      Html.RenderAction("relatedPostPartial", "Post");
-    }
   </div>
 </div>
 <!-- End main -->
@@ -36,28 +63,33 @@
     const renderComment = (data) => `
           <div class="comment">
             <div class="wrapper">
-              <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4YZrIgIF--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/295794/d80091f7-b567-46fd-ac94-fc0b79fb4ee2.jpeg" alt="" width="24" height="24">
-              <div class="comment-body">
-                <div class="username">${data.UserId}</div>
-                <div class="content">${data.Content}</div>
+              <img src=${data.User.AvatarUrl} alt="" width="24" height="24">
+              <div class="w-100">
+                <div class="comment-body">
+                  <div class="username">${data.User.Name}</div>
+                  <div class="content">${data.Content}</div>
+                </div>
+                <button data-comment-id="${data.CommentId}" class="reply btn">
+                  <img src="https://localhost:44346/Content/Images/reply-icon.svg" width="16"  height="16" style="margin-right:0"/>
+                  Reply
+                </button>
               </div>
-              <button data-comment-id="${data.CommentId}" class="reply">Reply</button>
             </div>
           </div>
           <div class="wrapper-sub-comment">
             <div class="sub-comment-list" data-comment-id="${data.CommentId}">
             </div>
             <div class="sub-comment-form hide" data-comment-id="${data.CommentId}">
-              <textarea id="content-sub-comment" name="subComent" rows="5" placeholder="Reply..."></textarea>
-              <button id="add-sub-comment" data-comment-id="${data.CommentId}">save</button>
+              <textarea class="content-sub-comment" name="subComent" rows="5" placeholder="Reply..." data-comment-id="${data.CommentId}"></textarea>
+              <button id="add-sub-comment" data-comment-id="${data.CommentId}" class="btn btn-primary">save</button>
             </div>
           </div>
         `
     const renderSubComment = (data) => `
           <div class="sub-comment" data-comment-id="${data.CommentId}">
-            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--4YZrIgIF--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/295794/d80091f7-b567-46fd-ac94-fc0b79fb4ee2.jpeg" alt="" width="24" height="24">
+            <img src=${data.User.AvatarUrl} alt="" width="24" height="24">
             <div class="sub-comment-body">
-              <div class="username">thegioicuabao</div>
+              <div class="username">${data.User.Name}</div>
               <div class="content">${data.Content}</div>
             </div>
           </div>
@@ -84,6 +116,7 @@
         success: function (response) {
           const commentElement = renderComment(response.data);
           $(".comment-list").prepend(commentElement)
+          $("#content-comment").val("");
         },
         error: function (xhr) {
           console.log('error');
@@ -95,7 +128,7 @@
     $(".discussion").on("click", "#add-sub-comment", e => {
       var button = $(e.target);
       const id = button.attr("data-comment-id");
-      const content = $("#content-sub-comment").val();
+      const content = $(`.content-sub-comment[data-comment-id=${id}]`).val();
       const payload = { commentId: id, content: content }
       $.ajax({
         url: "/Comment/CreateSubComment",
@@ -106,6 +139,7 @@
         success: function (response) {
           const subCommentElement = renderSubComment(response.data);
           $(`.sub-comment-list[data-comment-id=${response.data.CommentId}]`).append(subCommentElement)
+          $(`.content-sub-comment[data-comment-id=${id}]`).val("")
         },
         error: function (xhr) {
           console.log('error');

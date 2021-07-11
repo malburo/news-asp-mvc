@@ -16,7 +16,10 @@ namespace NewsApplication.Controllers
         [ChildActionOnly]
         public ActionResult Index(int Id)
         {
-            var commentList = context.Comments.Where(item => item.PostId == Id).ToList();
+            var commentList = context.Comments.Where(item => item.PostId == Id).OrderByDescending(x => x.CreatedAt).ToList();
+            var userId = User.Identity.GetUserId();
+            var currentUser = context.Users.Find(userId);
+            ViewBag.currentUser = currentUser;
             return PartialView("_CommentPartial", commentList);
         }
         [HttpPost]
@@ -34,8 +37,9 @@ namespace NewsApplication.Controllers
             context.Comments.Add(newComment);
             context.SaveChanges();
 
-            var response = context.Comments.Find(newComment.CommentId);
-            return Json(new { message = "Success", data = response }, JsonRequestBehavior.AllowGet);
+            var user = context.Users.Find(userId);
+            newComment.User = user;
+            return Json(new { message = "Success", data = newComment }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult CreateSubComment(int commentId, string content)
@@ -51,6 +55,8 @@ namespace NewsApplication.Controllers
             };
             context.SubComments.Add(newSubComment);
             context.SaveChanges();
+            var user = context.Users.Find(userId);
+            newSubComment.User = user;
             return Json(new { message = "Success", data = newSubComment }, JsonRequestBehavior.AllowGet);
         }
     }

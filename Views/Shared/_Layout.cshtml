@@ -33,12 +33,12 @@
       ViewBag.currentUser = null;
     }
 }
-<body>
+<body style="background-color:#eef0f1">
   <div class="nav-header">
     <div class="detail-nav col-3 float-left bg-white" id="navbarCollapse">
       <nav class="flex-column">
         <div class="nav-logo pt-4">
-          <a href="">
+          <a href="/">
             <img src="~/Content/Images/vietgame-long.png" style="max-width: 100px;" alt="">
           </a>
         </div>
@@ -52,14 +52,14 @@
           <li class="detail-menu-category">
             @foreach (var category in ViewBag.Categories)
             {
-              <a href="" class="detail-menu-name font-weight-bold">
+              <a href="/Home/Categories/@category.CategoryId" class="detail-menu-name font-weight-bold">
                 <i class="fas fa-gamepad text-primary" style="font-size: 25px;"></i>@category.Name
               </a>
               <ul class="sub-menu">
                 @foreach (var subCategory in category.SubCategory)
                 {
                   <li>
-                    <a href="" class="text-decoration-none">@subCategory.Name</a>
+                    <a href="/Home/DetailsCategory/@subCategory.SubCategoryId" class="text-decoration-none">@subCategory.Name</a>
                   </li>
                 }
               </ul>
@@ -70,23 +70,29 @@
     </div>
     <div class="hamburger-background d-none" style="width: 100%; height: 100vh; position: absolute; background-color: rgba(0,0,0,0.3); overflow: hidden; z-index: 2;">
     </div>
-    <header class="shadow">
+    <header>
       <nav class="navbar navbar-expand-md navbar-light bg-white">
         <button class="navbar-toggler d-block " style="outline: none;">
           <span class="navbar-toggler-icon "></span>
         </button>
-        <a href="# " class="navbar-brand">
+        <a href="/" class="navbar-brand">
           <img src="~/Content/Images/vietgame.png" alt="Viet Game" style="max-width: 150px; ">
         </a>
         <div class="collapse navbar-collapse">
           <div class="navbar-nav w-100">
+            @foreach (var category in ViewBag.Categories)
+            {
+              <a href="/Home/Categories/@category.CategoryId" class="nav-item nav-link ">@category.Name</a>
+            }
           </div>
           @Html.Partial("_LoginPartial")
         </div>
       </nav>
     </header>
   </div>
+  <div style="min-height: 65vh">
   @RenderBody()
+  </div>
   <footer class="card-footer ">
     <!-- flex-column  -->
     <div class="container d-flex justify-content-between">
@@ -192,7 +198,7 @@
       <div class="footer-logo flex-row float-right">
         <div class="footer-logo-show text-right">
           <a href="https://vietgame.asia/">
-            <img class="h-auto w-52 mb-6 logo" style="max-width: 200px !important;" src="~/Content/Images/vietgame-long.png" alt="Vietgame.asia">
+            <img class="h-auto w-52 mb-6 logo" style="max-width: 200px !important;" src="~/Content/Images/vietgame.png" alt="Vietgame.asia">
           </a>
         </div>
         <ul class="social-media justify-content-end d-flex">

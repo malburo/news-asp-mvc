@@ -4,84 +4,106 @@
   ViewBag.Title = "Index";
 }
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<h2>Index</h2>
-
-<p>
-  @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-  <tr>
-    <th>
-      @Html.DisplayNameFor(model => model.Author.Email)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model => model.Title)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model => model.Content)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model => model.ImageUrl)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model => model.Views)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model => model.CreatedAt)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model => model.UpdatedAt)
-    </th>
-    <th></th>
-  </tr>
-
-  @foreach (var item in Model)
-  {
-    <tr>
-      <td>
-        @Html.DisplayFor(modelItem => item.Author.Email)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.Title)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.Content)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.ImageUrl)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.Views)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.CreatedAt)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.UpdatedAt)
-      </td>
-      <td>
-        @Html.ActionLink("Save", "bookmark", "post", new { id = item.PostId }, null)
-        <button id="save" data-post-id="@item.PostId">save</button>
-      </td>
-    </tr>
-  }
-</table>
-
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+  <div class="row bg-light p-4" style="margin-bottom:24px">
+    <div class="col-8">
+      <article class="post position-relative ">
+        <button data-post-id="@Model.First().PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
+        <a href="/post/showpost/@Model.First().PostId" class="w-100">
+          <img src="@Model.First().ImageUrl" style="width: 100%;height: 425px; object-fit: cover" alt="cover">
+        </a>
+        <div class="related-post-tag pt-2">
+          @foreach (var subCategory in @Model.First().SubCategory.ToList())
+          {
+            <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
+          }
+        </div>
+        <div class="related-post-title">
+          <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@Model.First().Title</h2>
+          <p>
+            <span>@Model.First().CreatedAt.ToString("dd/MM/yyyy")</span> bởi @Model.First().Author.Name
+          </p>
+        </div>
+      </article>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <article class="post position-relative ">
+          <button data-post-id="@Model.Skip(1).First().PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
+          <a href="/post/showpost/@Model.Skip(1).First().PostId" class="w-100">
+            <img src="@Model.Skip(1).First().ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
+          </a>
+          <div class="related-post-tag pt-2">
+            @foreach (var subCategory in @Model.Skip(1).First().SubCategory.ToList())
+            {
+              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
+            }
+          </div>
+          <div class="related-post-title">
+            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@Model.Skip(1).First().Title</h2>
+            <p>
+              <span>@Model.Skip(1).First().CreatedAt.ToString("dd/MM/yyyy")</span> bởi @Model.Skip(1).First().Author.Name
+            </p>
+          </div>
+        </article>
+      </div>
+      <div class="row">
+        <article class="post position-relative ">
+          <button data-post-id="@Model.Skip(2).First().PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
+          <a href="/post/showpost/@Model.Skip(2).First().PostId" class="w-100">
+            <img src="@Model.Skip(2).First().ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
+          </a>
+          <div class="related-post-tag pt-2">
+            @foreach (var subCategory in @Model.Skip(2).First().SubCategory.ToList())
+            {
+              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
+            }
+          </div>
+          <div class="related-post-title">
+            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@Model.Skip(2).First().Title</h2>
+            <p>
+              <span>@Model.Skip(2).First().CreatedAt.ToString("dd/MM/yyyy")</span> bởi @Model.Skip(2).First().Author.Name
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="row bg-light p-4">
+    @foreach (var post in Model.Skip(3))
+    {
+      <div class="col-4 ">
+        <article class="post position-relative " style="height: 400px">
+          <button data-post-id="@post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
+          <a href="/post/showpost/@post.PostId" class="w-100">
+            <img src="@post.ImageUrl" style="width: 100%;height: 200px; object-fit: cover" alt="cover">
+          </a>
+          <div class="related-post-tag pt-2">
+            @foreach (var subCategory in post.SubCategory.ToList())
+            {
+              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
+            }
+          </div>
+          <div class="related-post-title">
+            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@post.Title</h2>
+            <p>
+              <span>@post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @post.Author.Name
+            </p>
+          </div>
+        </article>
+      </div>
+    }
+  </div>
+  </div>
 
 <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
-  <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-    <div class="toast-header">
-      <img src="..." class="rounded mr-2" alt="...">
-      <strong class="mr-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
+  <div id="liveToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" style="background: #4caf50">
+    <div class="d-flex">
+      <div class="toast-body">
+        Lưu bài viết thành công !!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close" id="close-toast"></button>
     </div>
   </div>
 </div>
@@ -89,18 +111,26 @@
 @section scripts
   {
   <script>
+    $("#close-toast").click(e => {
+      console.log(e.target)
+      $("#liveToast").removeClass("show")
+    })
     $(document).ready(() => {
-      $("#save").click(e => {
-        var button = $(e.target);
+      $(".save").click(e => {
+        var button = $(e.currentTarget);
         var id = button.attr("data-post-id");
         $.ajax({
-          url: "/post/bookmark",
+          url: "/bookmark/bookmark",
           dataType: "json",
           type: "POST",
           contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify({ Id: id}),
+          data: JSON.stringify({ Id: id }),
           success: function (data) {
-            console.log(data);
+            $("#liveToast").addClass("show")
+            button.addClass("d-none")
+            setTimeout(() => {
+              $("#liveToast").removeClass("show")
+            }, 2000)  
           },
           error: function (xhr) {
             console.log('error');

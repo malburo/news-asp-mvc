@@ -13,7 +13,7 @@ namespace NewsApplication.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            var postList = db.Posts.ToList();
+            var postList = db.Posts.OrderByDescending(p => p.CreatedAt).ToList();
             return View(postList);
         }
 

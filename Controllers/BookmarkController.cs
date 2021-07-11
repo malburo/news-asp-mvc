@@ -8,15 +8,12 @@ using System.Web.Mvc;
 
 namespace NewsApplication.Controllers
 {
+    [Authorize]
     public class BookmarkController : Controller
     {
         private ApplicationDbContext context = new ApplicationDbContext();
         // GET: Bookmark
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult MyBookmark()
         {
             string userId = User.Identity.GetUserId();
             var bookmarkList = context.Bookmarks.Where(b => b.UserId == userId).ToList();

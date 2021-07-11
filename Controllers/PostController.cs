@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace NewsApplication.Controllers
 {
+    [AllowAnonymous]
     public class PostController : Controller
     {
         private ApplicationDbContext context = new ApplicationDbContext();

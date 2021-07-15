@@ -1,4 +1,6 @@
-﻿@model IEnumerable<NewsApplication.Models.Post>
+﻿@using NewsApplication.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Post>
 
 @{
   ViewBag.Title = "Index";
@@ -9,69 +11,69 @@
   <div class="row bg-light p-4" style="margin-bottom:24px">
     <div class="col-8">
       <article class="post position-relative ">
-        <button data-post-id="@Model.First().PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
-        <a href="/post/showpost/@Model.First().PostId" class="w-100">
-          <img src="@Model.First().ImageUrl" style="width: 100%;height: 425px; object-fit: cover" alt="cover">
+        <button data-post-id="@ViewBag.Top1Post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
+        <a href="/post/showpost/@ViewBag.Top1Post.PostId" class="w-100">
+          <img src="@ViewBag.Top1Post.ImageUrl" style="width: 100%;height: 425px; object-fit: cover" alt="cover">
         </a>
         <div class="related-post-tag pt-2">
-          @foreach (var subCategory in @Model.First().SubCategory.ToList())
+          @foreach (var subCategory in @ViewBag.Top1Post.SubCategory)
           {
             <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
           }
         </div>
         <div class="related-post-title">
-          <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@Model.First().Title</h2>
-          <p>
-            <span>@Model.First().CreatedAt.ToString("dd/MM/yyyy")</span> bởi @Model.First().Author.Name
-          </p>
+            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@ViewBag.Top1Post.Title</h2>
+            <p>
+                <span>@ViewBag.Top1Post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @ViewBag.Top1Post.Author.Name
+            </p>
         </div>
       </article>
     </div>
     <div class="col-4">
       <div class="row">
         <article class="post position-relative ">
-          <button data-post-id="@Model.Skip(1).First().PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
-          <a href="/post/showpost/@Model.Skip(1).First().PostId" class="w-100">
-            <img src="@Model.Skip(1).First().ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
+          <button data-post-id="@ViewBag.Top2Post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
+          <a href="/post/showpost/@ViewBag.Top2Post.PostId" class="w-100">
+            <img src="@ViewBag.Top2Post.ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
           </a>
           <div class="related-post-tag pt-2">
-            @foreach (var subCategory in @Model.Skip(1).First().SubCategory.ToList())
+            @foreach (var subCategory in @ViewBag.Top2Post.SubCategory)
             {
               <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
             }
           </div>
           <div class="related-post-title">
-            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@Model.Skip(1).First().Title</h2>
-            <p>
-              <span>@Model.Skip(1).First().CreatedAt.ToString("dd/MM/yyyy")</span> bởi @Model.Skip(1).First().Author.Name
-            </p>
+              <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@ViewBag.Top2Post.Title</h2>
+              <p>
+                  <span>@ViewBag.Top2Post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @ViewBag.Top2Post.Author.Name
+              </p>
           </div>
         </article>
       </div>
       <div class="row">
         <article class="post position-relative ">
-          <button data-post-id="@Model.Skip(2).First().PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
-          <a href="/post/showpost/@Model.Skip(2).First().PostId" class="w-100">
-            <img src="@Model.Skip(2).First().ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
+          <button data-post-id="@ViewBag.Top3Post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
+          <a href="/post/showpost/@ViewBag.Top3Post.PostId" class="w-100">
+            <img src="@ViewBag.Top3Post.ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
           </a>
           <div class="related-post-tag pt-2">
-            @foreach (var subCategory in @Model.Skip(2).First().SubCategory.ToList())
+            @foreach (var subCategory in @ViewBag.Top3Post.SubCategory)
             {
               <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
             }
           </div>
           <div class="related-post-title">
-            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@Model.Skip(2).First().Title</h2>
-            <p>
-              <span>@Model.Skip(2).First().CreatedAt.ToString("dd/MM/yyyy")</span> bởi @Model.Skip(2).First().Author.Name
-            </p>
+              <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@ViewBag.Top3Post.Title</h2>
+              <p>
+                  <span>@ViewBag.Top3Post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @ViewBag.Top3Post.Author.Name
+              </p>
           </div>
         </article>
       </div>
     </div>
   </div>
   <div class="row bg-light p-4">
-    @foreach (var post in Model.Skip(3))
+    @foreach (var post in Model)
     {
       <div class="col-4 ">
         <article class="post position-relative " style="height: 400px">
@@ -95,7 +97,7 @@
       </div>
     }
   </div>
-  </div>
+</div>
 
 <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
   <div id="liveToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" style="background: #4caf50">
@@ -107,6 +109,9 @@
     </div>
   </div>
 </div>
+ <div>
+    @Html.PagedListPager(Model,page => Url.Action("Index",new{page=page}) )
+  </div>
 
 @section scripts
   {

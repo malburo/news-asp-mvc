@@ -295,3 +295,31 @@ footer .social-media a i {
   opacity: 0.7;
   transition: all ease 0.5s;
 }
+
+.pagination-container .pagination{
+    justify-content: center;
+}
+
+.pagination-container .pagination li {
+    display: inline-block;
+    margin: 2px;
+    border-radius: 5px;
+    padding: 3px 25px;
+    background-color: aliceblue;
+    outline-color:#0084ff;
+}
+
+.pagination-container .pagination .active {
+    color: aliceblue;
+    background-color: #0084ff;
+}
+
+.pagination-container .pagination .active a{
+    color: aliceblue;
+}
+
+.pagination-container .pagination li a{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}

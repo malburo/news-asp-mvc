@@ -5,16 +5,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace NewsApplication.Controllers
 {
     public class HomeController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
             var postList = db.Posts.OrderByDescending(p => p.CreatedAt).ToList();
-            return View(postList);
+            var top1Post = postList.First();
+            var top2Post = postList.Skip(1).First();
+            var top3Post = postList.Skip(2).First();
+            ViewBag.Top1Post = top1Post;
+            ViewBag.Top2Post = top2Post;
+            ViewBag.Top3Post = top3Post;
+            var posts = postList.Skip(3).ToList();
+            int pageSize = 6;
+            int pageNum = (page ?? 1);
+            return View(posts.ToPagedList(pageNum,pageSize));
         }
 
         public ActionResult Categories(int id)
@@ -60,7 +71,7 @@ namespace NewsApplication.Controllers
             return PartialView("_Top_3_PostsRE");
         }
         
-        public ActionResult DetailsCategory(int id)
+        public ActionResult DetailsCategory(int id, int ? page)
         {
             SubCategory subCategory = db.SubCategories.FirstOrDefault(s => s.SubCategoryId == id);
             if (subCategory == null)
@@ -72,7 +83,12 @@ namespace NewsApplication.Controllers
                                 orderby p.CreatedAt descending
                                 select p).ToList();
             ViewBag.Posts = Posts;
-            return View(subCategory);
+            int pageSize = 3;
+            int pageNum = (page ?? 1);
+            ViewBag.SubCategory = subCategory;
+            
+
+            return View(Posts.ToPagedList(pageNum,pageSize));
         }
         public ActionResult Details()
         {

@@ -83,3 +83,16 @@ a {
 .news-title .text-title:hover {
     background-size: 100% 100%;
 }
+
+.like-btn{
+    padding: 5px 30px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+
+.dislike-btn{
+    padding: 5px 30px;
+    border-radius: 10px;
+    border-style: none;
+}

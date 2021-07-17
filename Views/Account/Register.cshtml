@@ -14,7 +14,7 @@
         <div class="col-md-4 d-none d-md-block">
           <div class="login__left">
             <a href="#" class="login__logo">News.</a>
-            <p class="login__info">All the latest news about Gaming</p>
+            <p class="login__info">Thông tin mới nhất về Game Việt.</p>
             <div class="games">
               <div class="games__items">
                 <img src="~/Content/Images/dota.jpg"
@@ -44,39 +44,41 @@
                 </div>
               </div>
             </div>
-            <p class="discover">Discover more</p>
+            <p class="discover">Khám phá nhiều hơn</p>
           </div>
         </div>
         <div class="col-sm-12 col-md-8">
-          @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login__form", role = "form" }))
-          {
-            @Html.AntiForgeryToken()
-            <h3 class="title">Sign up</h3>
-            <div class="login__line">
-              <span class="login__text">Already a user ?</span>
-              <a class="login__link" href="/account/login">Login now</a>
-            </div>
-            <p class="login__text my-3">Email Address</p>
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-field" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-            <p class="login__text my-3">Fullname</p>
-            @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-field" })
-            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-            <p class="login__text my-3">Password</p>
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control input-field" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+          <div class="login__form">
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <input type="submit" value="Continue" class="btn w-100 btn_purple" />
+            @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+              @Html.AntiForgeryToken()
+              <h3 class="title">Đăng kí tài khoản</h3>
+              <div class="login__line">
+                <span class="login__text">Bạn đã có toàn khoản ?</span>
+                <a class="login__link" href="/account/login">Đăng nhập ngay</a>
+              </div>
+              <p class="login__text my-3">Email</p>
+              @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-field" })
+              @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+              <p class="login__text my-3">Họ và tên</p>
+              @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-field" })
+              @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+              <p class="login__text my-3">Mật khẩu</p>
+              @Html.PasswordFor(m => m.Password, new { @class = "form-control input-field" })
+              @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
-            <div class="login__text my-3">Or continue with</div>
-            <button type="button" class="btn btn-primary w-100">
-              Google
-            </button>
-          }
+              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+              <input type="submit" value="Đăng kí" class="btn w-100 btn_purple" />
+              <div class="login__text my-3">Hoặc đăng kí với</div>
+            }
+            <section id="socialLoginForm">
+              @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+          </div>
 
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </section>

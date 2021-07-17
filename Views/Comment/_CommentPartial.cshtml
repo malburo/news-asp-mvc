@@ -5,7 +5,7 @@
     <img src=@ViewBag.currentUser.AvatarUrl alt="" width="24" height="24">
     <div class="w-100">
     <textarea id="content-comment" name="comment" rows="5" placeholder="Comment something..."></textarea>
-    <button id="add-comment" data-post-id="1" class="btn btn-primary">Submit</button>
+    <button id="add-comment" data-post-id="@ViewBag.postId" class="btn btn-primary">Submit</button>
     </div>
   </div>
   <div class="comment-list">

@@ -48,14 +48,14 @@ namespace NewsApplication.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email không được để trống")]
         [Display(Name = "Email")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
         public string Email { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
+        [DataType(DataType.Password, ErrorMessage = "Mật khẩu không đúng dịnh dạng")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]
@@ -64,20 +64,20 @@ namespace NewsApplication.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email không được để trống")]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(255, ErrorMessage = "The {0} must be at least {2} characters long.")]
-        [Display(Name = "FullName")]
+        [Required(ErrorMessage = "Họ và tên không được để trống")]
+        [StringLength(255, ErrorMessage = "Tên phải nằm trong khoảng từ 0 - 255 kí tự")]
+        [Display(Name = "Họ và tên")]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải nằm trong khoảng từ 6 - 100 kí tự", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
     }
 
@@ -89,14 +89,14 @@ namespace NewsApplication.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải nằm trong khoảng từ 6 - 100 kí tự", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Xác nhận mật khẩu")]
+        [Compare("Password", ErrorMessage = "Mật khẩu không khớp")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

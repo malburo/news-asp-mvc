@@ -86,7 +86,7 @@ namespace NewsApplication.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Sai tài khoản hoặc mật khẩu");
                     return View(model);
             }
         }
@@ -343,7 +343,36 @@ namespace NewsApplication.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        return RedirectToAction("Index", "Manage");
+                    }
+
+                    if (ModelState.IsValid)
+                    {
+                        // Get the information about the user from the external login provider
+                        var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+                        if (info == null)
+                        {
+                            return View("ExternalLoginFailure");
+                        }
+                        var user = new ApplicationUser { UserName = info.Email, Email = info.Email, AvatarUrl = "https://avatars.dicebear.com/api/identicon/" + info.Email + ".svg", Name = info.DefaultUserName };
+                        var results = await UserManager.CreateAsync(user);
+                        if (results.Succeeded)
+                        {
+                            results = await UserManager.AddLoginAsync(user.Id, info.Login);
+                            if (results.Succeeded)
+                            {
+                                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                                return RedirectToLocal(returnUrl);
+                            }
+                        }
+                        AddErrors(results);
+                    }
+
+                    ViewBag.ReturnUrl = returnUrl;
+                    return RedirectToLocal(returnUrl);
+                    //return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
 
@@ -367,7 +396,7 @@ namespace NewsApplication.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, AvatarUrl = "https://avatars.dicebear.com/api/identicon/" + model.Email + ".svg", Name = info.DefaultUserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

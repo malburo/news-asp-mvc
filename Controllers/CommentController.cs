@@ -20,6 +20,7 @@ namespace NewsApplication.Controllers
             var userId = User.Identity.GetUserId();
             var currentUser = context.Users.Find(userId);
             ViewBag.currentUser = currentUser;
+            ViewBag.postId = Id;
             return PartialView("_CommentPartial", commentList);
         }
         [HttpPost]
@@ -36,7 +37,7 @@ namespace NewsApplication.Controllers
             };
             context.Comments.Add(newComment);
             context.SaveChanges();
-
+           
             var user = context.Users.Find(userId);
             newComment.User = user;
             return Json(new { message = "Success", data = newComment }, JsonRequestBehavior.AllowGet);

@@ -1,4 +1,6 @@
-﻿@model NewsApplication.Models.SubCategory
+﻿@using NewsApplication.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Post>
 @{
   ViewBag.Title = "DetailCategory";
   Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,10 +8,10 @@
 <!-- Start main -->
 <div class="container list-news-container">
   <div class="head_title">
-    <h1 id="text_title">@Model.Name</h1>
+    <h1 id="text_title">@ViewBag.SubCategory.Name</h1>
   </div>
   <div class="row">
-    @foreach (var post in ViewBag.Posts)
+    @foreach (var post in Model)
     {
       <div class="col-4 ">
         <article class="post position-relative " style="height: 400px">
@@ -31,6 +33,9 @@
         </article>
       </div>
     }
+  </div>
+  <div>
+    @Html.PagedListPager(Model,page => Url.Action("DetailsCategory",new{page=page}) )
   </div>
 </div>
 <!-- End main -->

@@ -2,10 +2,10 @@
 <link href="~/Content/Comment.css" rel="stylesheet" />
 <div class="discussion">
   <div class="comment-form">
-    <img src=@ViewBag.currentUser.AvatarUrl alt="" width="24" height="24">
+    <img src=@ViewBag.currentUser.AvatarUrl alt="" width="24" height="24" style="margin-top: 4px">
     <div class="w-100">
-    <textarea id="content-comment" name="comment" rows="5" placeholder="Comment something..."></textarea>
-    <button id="add-comment" data-post-id="@ViewBag.postId" class="btn btn-primary">Submit</button>
+    <textarea id="content-comment" name="comment" rows="2" placeholder="Bình luận điều gì đó..."></textarea>
+    <button id="add-comment" data-post-id="@ViewBag.postId" class="btn btn-primary">Bình luận</button>
     </div>
   </div>
   <div class="comment-list">
@@ -13,15 +13,16 @@
     {
       <div class="comment">
         <div class="wrapper">
-          <img src="@comment.User.AvatarUrl" alt="comment" width="24" height="24">
+          <img src="@comment.User.AvatarUrl" alt="comment" width="24" height="24" style="margin-top: 4px">
           <div class="w-100">
           <div class="comment-body">
             <div class="username">@comment.User.Name</div>
             <div class="content">@comment.Content</div>
           </div>
-          <button data-comment-id="@comment.CommentId" class="reply btn">
-            <img src="~/Content/Images/reply-icon.svg" width="16"  height="16  " style="margin-right:0"/>
-            Reply</button>
+          <button data-comment-id="@comment.CommentId" class="reply btn" style="margin-top: 4px; margin-left: 12px; margin-bottom: 12px">
+            <i class="fas fa-reply"></i>
+            Trả lời
+          </button>
           </div>
         </div>
       </div>
@@ -30,7 +31,7 @@
           @foreach (var subComment in comment.SubComment.ToList())
           {
             <div class="sub-comment" data-comment-id="@comment.CommentId">
-              <img src="@subComment.User.AvatarUrl" alt="sub-comment" width="24" height="24">
+              <img src="@subComment.User.AvatarUrl" alt="sub-comment" width="24" height="24" style="margin-top: 4px">
               <div class="sub-comment-body">
                 <div class="username">@subComment.User.Name</div>
                 <div class="content">@subComment.Content</div>
@@ -39,8 +40,8 @@
           }
         </div>
         <div class="sub-comment-form hide" data-comment-id="@comment.CommentId">
-          <textarea class="content-sub-comment" name="subComent" rows="5" placeholder="Reply..." data-comment-id="@comment.CommentId"></textarea>
-          <button id="add-sub-comment" data-comment-id="@comment.CommentId" class="btn btn-primary">save</button>
+          <textarea class="content-sub-comment" name="subComent" rows="1" placeholder="Bình luận điều gì đó..." data-comment-id="@comment.CommentId"></textarea>
+          <button id="add-sub-comment" data-comment-id="@comment.CommentId" class="btn btn-primary">Trả lời</button>
         </div>
       </div>
     }

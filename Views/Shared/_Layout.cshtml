@@ -34,38 +34,36 @@
     }
 }
 <body style="background-color:#eef0f1">
-  <div class="nav-header">
-    <div class="detail-nav col-3 float-left bg-white" id="navbarCollapse">
+  <div class="nav-header" >
+    <div class="detail-nav col-3 float-left bg-white p-4 overflow-scroll" id="navbarCollapse" style="width: 350px; overflow-x: hidden!important">
       <nav class="flex-column">
         <div class="nav-logo pt-4">
           <a href="/">
             <img src="~/Content/Images/vietgame-long.png" style="max-width: 100px;" alt="">
           </a>
         </div>
-        <form class="form-inline ml-auto pt-2 pb-2 mt-3" action="/Post/Search" method="get">
-          <input type="text" class="mr-sm-2 border-bottom border-top" placeholder="Search" name="searchString">
+        <form class="form-inline ml-auto p-1  mb-4" style="border: none; border-radius: 12px; background: #f1f2f3" action="/Post/Search" method="get">
+          <input type="text" class="mr-sm-2" placeholder="Search" name="searchString" style="background: #f1f2f3">
           <button type="submit" class="btn btn-outline-light">
             <i class="fas fa-search"></i>
           </button>
         </form>
-        <ul class="detail-menu">
-          <li class="detail-menu-category">
+          <div class="side-bar">
             @foreach (var category in ViewBag.Categories)
             {
-              <a href="/Home/Categories/@category.CategoryId" class="detail-menu-name font-weight-bold">
-                <i class="fas fa-gamepad text-primary" style="font-size: 25px;"></i>@category.Name
+              <a href="/Home/Categories/@category.CategoryId" class="font-weight-bold" style="font-size: 20px">
+                @category.Name
               </a>
-              <ul class="sub-menu">
+              <div class="mb-4 mt-4">
                 @foreach (var subCategory in category.SubCategory)
                 {
-                  <li>
+                  <div class="sub-category" style="margin-bottom: 12px">
                     <a href="/Home/DetailsCategory/@subCategory.SubCategoryId" class="text-decoration-none">@subCategory.Name</a>
-                  </li>
+                  </div>
                 }
-              </ul>
+              </div>
             }
-          </li>
-        </ul>
+          </div>
       </nav>
     </div>
     <div class="hamburger-background d-none" style="width: 100%; height: 100vh; position: absolute; background-color: rgba(0,0,0,0.3); overflow: hidden; z-index: 2;">
@@ -99,7 +97,7 @@
       <ul class="footer-category">
         <li class="footer-category-name">
           <a href="" class="category-name font-weight-bold" style="">
-            <i class="fas fa-gamepad text-primary"></i> Game
+           Game
           </a>
           <ul class="sub-category">
             <li>
@@ -121,7 +119,7 @@
         </li>
         <li class="footer-category-name">
           <a href="" class="category-name font-weight-bold">
-            <i class="far fa-keyboard text-primary"></i> Gaming Gear
+            Gaming Gear
           </a>
           <ul class="sub-category">
             <li>
@@ -143,7 +141,7 @@
         </li>
         <li class="footer-category-name">
           <a href="" class="category-name font-weight-bold" style="">
-            <i class="fas fa-mouse text-primary"></i> GADGETS
+            GADGETS
           </a>
           <ul class="sub-category">
             <li>
@@ -156,7 +154,7 @@
         </li>
         <li class="footer-category-name">
           <a href="" class="category-name font-weight-bold">
-            <i class=" fas fa-trophy text-primary "></i> eSports
+           eSports
           </a>
           <ul class="sub-category">
             <li>
@@ -166,7 +164,7 @@
         </li>
         <li class="footer-category-name">
           <a href="" class="category-name font-weight-bold">
-            <i class=" fas fa-tags text-primary"></i> Game Miễn Phí
+            Game Miễn Phí
           </a>
           <ul class="sub-category">
             <li class="d-none">
@@ -176,7 +174,7 @@
         </li>
         <li class="footer-category-name">
           <a href="" class="category-name font-weight-bold">
-            <i class="far fa-calendar-alt text-primary "></i> Sự Kiện
+             Sự Kiện
           </a>
           <ul class="sub-category">
             <li class="d-none">
@@ -186,7 +184,7 @@
         </li>
         <li class="footer-category-name">
           <a href="" class="category-name font-weight-bold">
-            <i class="fas fa-ad text-primary"></i> Quảng cáo
+           Quảng cáo
           </a>
           <ul class="sub-category">
             <li class="d-none">
@@ -201,7 +199,7 @@
             <img class="h-auto w-52 mb-6 logo" style="max-width: 200px !important;" src="~/Content/Images/vietgame.png" alt="Vietgame.asia">
           </a>
         </div>
-        <ul class="social-media justify-content-end d-flex">
+        <ul class="social-media justify-content-end d-flex" style="color: black">
           <li>
             <a href="#"><i class="fab fa-facebook"></i></a>
           </li>
@@ -216,11 +214,10 @@
           </li>
         </ul>
         <div class="contact float-right text-right mb-3 w-100">
-          <h5 class="mb-0"><a href="" class="font-weight-bold text-decoration-none">Liên Hệ</a></h5>
-          <h5><a href="" class="font-weight-bold text-decoration-none">Quảng Cáo</a></h5>
+          <h5 class="mb-0"><a href="" class="font-weight-bold text-decoration-none" style="color:#868686">Liên Hệ</a></h5>
+          <h5><a href="" class="font-weight-bold text-decoration-none" style="color:#868686">Quảng Cáo</a></h5>
         </div>
         <div class="copy-right float-right text-right w-100">
-          <span>2021</span><a href="" class="font-weight-bold">VietGame.Asia</a>
           <p class="text-capitalize">All Right Reserved</p>
         </div>
       </div>

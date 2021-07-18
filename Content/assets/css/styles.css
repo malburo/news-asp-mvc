@@ -28,14 +28,16 @@ a {
     grid-template-columns: repeat(1, 1fr) !important;
   }
 
-    .related-posts article {
-      width: 100%;
-    }
+  .related-posts article {
+    width: 100%;
+  }
 
   .footer-category {
     display: none !important;
   }
-
+  .footer-category a {
+    color: black
+  }
   .footer-logo {
     float: none !important;
   }
@@ -93,8 +95,6 @@ a {
 }
 
 .nav-header .detail-nav form {
-  margin-left: -10px !important;
-  width: 110%;
   position: relative;
 }
 
@@ -108,7 +108,6 @@ a {
 
 .nav-header .detail-nav form button {
   position: absolute;
-  top: 20%;
   color: black;
   left: 80%;
   border: none;
@@ -116,6 +115,9 @@ a {
   outline: none;
 }
 
+  .nav-header .detail-nav form button:hover {
+    background: #ccc;
+  }
 .nav-header .detail-nav.open {
   -webkit-transform: translateX(0%);
   transform: translateX(0%);
@@ -261,7 +263,9 @@ footer .footer-category {
   -ms-grid-columns: (1fr);
   grid-template-columns: repeat(4, 1fr);
 }
-
+footer .footer-category a {
+  color: black;
+}
 footer .footer-category-name .category-name {
   color: gray;
   text-decoration: none;
@@ -281,8 +285,7 @@ footer .footer-category-name .category-name i {
 }
 
 footer .sub-category {
-  margin-left: -40px !important;
-  padding-top: 5px;
+  padding: 0px;
 }
 
 footer .sub-category li {
@@ -297,9 +300,11 @@ footer .social-media li:not(:last-child) {
   margin-right: 10px;
 }
 
-footer .social-media a i {
-  font-size: 18px;
-}
+  footer .social-media a i {
+    font-size: 18px;
+    color: #868686;
+  }
+
 
 .post:hover img {
   opacity: 0.7;
@@ -332,4 +337,13 @@ footer .social-media a i {
   text-decoration: none;
   font-weight: bolder;
   font-size: 1.2rem;
+}
+
+.side-bar {
+
+}
+
+.side-bar a {
+  text-decoration: none;
+  color: black;
 }

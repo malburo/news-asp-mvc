@@ -76,16 +76,16 @@
     const renderComment = (data) => `
           <div class="comment">
             <div class="wrapper">
-              <img src=${data.User.AvatarUrl} alt="" width="24" height="24">
+              <img src=${data.User.AvatarUrl} alt="" width="24" height="24" style="margin-top: 4px">
               <div class="w-100">
                 <div class="comment-body">
                   <div class="username">${data.User.Name}</div>
                   <div class="content">${data.Content}</div>
                 </div>
-                <button data-comment-id="${data.CommentId}" class="reply btn">
-                  <img src="https://localhost:44346/Content/Images/reply-icon.svg" width="16"  height="16" style="margin-right:0"/>
-                  Reply
-                </button>
+              <button data-comment-id="${data.CommentId}" class="reply btn" style="margin-top: 4px; margin-left: 12px; margin-bottom: 12px">
+                <i class="fas fa-reply"></i>
+                Trả lời
+              </button>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
         `
     const renderSubComment = (data) => `
           <div class="sub-comment" data-comment-id="${data.CommentId}">
-            <img src=${data.User.AvatarUrl} alt="" width="24" height="24">
+            <img src=${data.User.AvatarUrl} alt="" width="24" height="24" style="margin-top: 4px">
             <div class="sub-comment-body">
               <div class="username">${data.User.Name}</div>
               <div class="content">${data.Content}</div>

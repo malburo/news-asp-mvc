@@ -1,50 +1,49 @@
 ﻿@model IEnumerable<NewsApplication.Models.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Thể loại";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Category</h2>
+<h2>Thể loại</h2>
 
 <p>
-    <button class="btn btn-primary"> @Html.ActionLink("Create new", "Create", null, new { @class = "text-white text-decoration-none" })</button>
-    <button class="btn btn-primary"> @Html.ActionLink("Create new Sub", "Create", "SubCategories", null, new { @class = "text-white text-decoration-none" })</button>
+    <button class="btn btn-primary"> @Html.ActionLink("Tạo thể loại chính", "Create", null, new { @class = "text-white text-decoration-none" })</button>
+    <button class="btn btn-primary"> @Html.ActionLink("Tạo thể loại con", "Create", "SubCategories", null, new { @class = "text-white text-decoration-none" })</button>
 </p>
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-table me-1"></i> Category
+        <i class="fas fa-table me-1"></i> Thể loại
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Name)
+                       Tên
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Color)
+                        Màu
                     </th>
                     <th>
-                        Sub Categories
+                        Thể loại con
                     </th>
-                    <th>Edit</th>
+                    <th>Sửa</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Name)
+                        Tên
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Color)
+                        Màu
                     </th>
                     <th>
-                        Sub Categories
+                        Thể loại con
                     </th>
-                    <th>Edit</th>
+                    <th>Sửa</th>
                 </tr>
-
             </tfoot>
             <tbody>
                 @foreach (var item in Model)
@@ -62,8 +61,8 @@
                             }
                         </td>
                         <td class="col-md-2">
-                            <button class="btn btn-primary">@Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
-                            <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
+                            <button class="btn btn-primary">@Html.ActionLink("Sửa", "Edit", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
+                            <button class="btn btn-danger">@Html.ActionLink("Xóa", "Delete", new { id = item.CategoryId }, new { @class = "text-white text-decoration-none" }) </button>
                         </td>
                     </tr>
                 }

@@ -1,19 +1,19 @@
 ﻿@model NewsApplication.Models.Post
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn chắc chắn xóa bài viết này không?</h3>
 <div>
-    <h4>Post</h4>
+    <h4>Bài đăng</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Author.Email)
+            <label>Author</label>
         </dt>
 
         <dd>
@@ -21,14 +21,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            <label>Tiêu đề</label>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            <label>Hình ảnh</label>
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Views)
+            <label>Lượt xem</label>
         </dt>
 
         <dd>
@@ -44,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
+            <label>Ngày khởi tạo</label>
         </dt>
 
         <dd>
@@ -52,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
+            <label>Ngày cập nhập</label>
         </dt>
 
         <dd>
@@ -66,7 +66,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-danger"/>
-            <button class="btn btn-primary">@Html.ActionLink("Back to List", "Index", " ",new { @class = "text-white text-decoration-none" })</button>
+            <button class="btn btn-primary">@Html.ActionLink("Quay lại", "Index", " ",new { @class = "text-white text-decoration-none" })</button>
         </div>
     }
 </div>

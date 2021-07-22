@@ -1,7 +1,7 @@
 ﻿@model NewsApplication.Models.ApplicationUser
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Sửa";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -10,25 +10,25 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Edit User</h4>
+    <h4>Sửa</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
 
-    <div class="form-group pt-2">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 pb-1" })
-        <div class="col-md-5">
-            <h5>@Html.DisplayFor(model => model.Email)</h5>
-        </div>
+<div class="form-group pt-2">
+    <label class="control-label col-md-2 pb-2">Email</label>
+    <div class="col-md-5">
+        <h5>@Html.DisplayFor(model => model.Email)</h5>
     </div>
-    <div class="form-group pt-2">
-        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2 pb-1" })
-        <div class="col-md-5">
-            <h5>@Html.DisplayFor(model => model.UserName)</h5>
-        </div>
+</div>
+<div class="form-group pt-2">
+    <label class="control-label col-md-2 pb-2">Tên tài khoản</label>
+    <div class="col-md-5">
+        <h5>@Html.DisplayFor(model => model.UserName)</h5>
     </div>
+</div>
     <div class="form-group pt-2">
-        <label class="control-label col-md-2 pb-2">Permission</label>
+        <label class="control-label col-md-2 pb-2">Quyền hạn</label>
         <div class="col-md-10">
             @if (ViewBag.user_role != null)
             {
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group pt-2 pb-2">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
             </div>
         </div>
     </div>
@@ -68,5 +68,5 @@
     }
 
 <div>
-    <button class="btn btn-primary">  @Html.ActionLink("Back to List", "Index", "Users", "", new { @class = "text-white text-decoration-none" })</button>
+    <button class="btn btn-primary">  @Html.ActionLink("Quay lại", "Index", "Users", "", new { @class = "text-white text-decoration-none" })</button>
 </div>

@@ -8,14 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Blog Administrator</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <script src="~/Content/Admin/node_modules/ckeditor4/ckeditor.js"></script>
     <script src="~/Content/Admin/node_modules/ckeditor4/samples/js/sample.js"></script>
     <link rel="stylesheet" href="~/Content/Admin/node_modules/ckeditor4/samples/css/samples.css">
     <link href="~/Content/Admin/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    <title>@ViewBag.Titlee</title>
+    <title>@ViewBag.Title</title>
 </head>
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -53,38 +52,31 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <div class="sb-sidenav-menu-heading">Trang</div>
                         <a class="nav-link" href="/Admin/Home/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                            Trang chủ
                         </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <div class="sb-sidenav-menu-heading">Giao Diện</div>
                         <a class="nav-link collapsed" href="/Admin/Posts/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Posts
+                            Bài Đăng
                         </a>
-                        <a class="nav-link collapsed" href="/Admin/Categories/Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Categories
-                        </a>
-                        <a class="nav-link collapsed" href="/Admin/Users/Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Accounts
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <a class="nav-link collapsed" href="/Admin/Categories/Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Thể loại
+                            </a>
+                            <a class="nav-link collapsed" href="/Admin/Users/Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Tài Khoản
+                            </a>
+                        }
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    <div class="small">Đã đăng nhập</div>
                 </div>
             </nav>
         </div>
@@ -97,11 +89,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                        <div>
-                            <a href="#">Privacy Policy</a> &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+                        <div class="text-muted">Copyright &copy; Website 2021</div>
                     </div>
                 </div>
             </footer>

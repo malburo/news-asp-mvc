@@ -1,7 +1,7 @@
 ﻿@model NewsApplication.Models.Post
 <pages validataRequest="false"/>
     @{
-        ViewBag.Title = "Edit";
+        ViewBag.Title = "Chỉnh sửa";
         Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     }
 
@@ -10,19 +10,19 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal pt-2">
-            <h4>@Html.ActionLink("Post", "Index", null, new { @class = "text-primary text-decoration-none" }) - Edit</h4>
+            <h4>@Html.ActionLink("Bài đăng", "Index", null, new { @class = "text-primary text-decoration-none" }) - Sửa</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.PostId)
             <div class="form-group pt-2">
-                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                 <label class="control-label col-md-2 pb-2">Tiêu đề</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group pt-2 d-flex flex-wrap flex-column">
-                <label class="control-label col-md-2 pb-2">Category</label>
+                <label class="control-label col-md-2 pb-2">Thể loại</label>
                 <div class="col-md-10">
                     @if (ViewBag.subcategory_post != null)
                     {
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="form-group pt-2">
-                @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2 pb-2">Hình ảnh</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
@@ -62,7 +62,7 @@
             </div>
 
             <div class="form-group pt-2">
-                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2 pb-2">Nội dung</label>
                 <div class="col-md-8">
                     <textarea name="Content" id="editor" class="form-control">@Html.DisplayFor(model => model.Content)</textarea>
                     @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
@@ -70,13 +70,12 @@
             </div>
             <div class="form-group pt-2">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
                 </div>
             </div>
         </div>
     }
 
     <div class="pt-2">
-         
-        <button class="btn btn-primary">@Html.ActionLink("Back to List", "Index", null, new { @class = "text-white text-decoration-none" })</button>
+        <button class="btn btn-primary">@Html.ActionLink("Quay lại", "Index", null, new { @class = "text-white text-decoration-none" })</button>
     </div>

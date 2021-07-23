@@ -1,46 +1,46 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang chủ";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-  <h1 class="mt-4">Dashboard</h1>
+  <h1 class="mt-4">Trang chủ</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">Trang chủ</li>
             </ol>
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
-                        <div class="card-body">Primary Card</div>
+                        <div class="card-body">Tổng các bài đăng: <span style="font-size: 18px; font-weight: bold;">@ViewBag.CountPosts</span> </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <a class="small text-white stretched-link" href="/Admin/Posts/Index">Xem chi tiết</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-warning text-white mb-4">
-                        <div class="card-body">Warning Card</div>
+                        <div class="card-body">Tổng các thư mục: <span style="font-size: 18px; font-weight: bold;">@ViewBag.CountCategories</span>  </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <a class="small text-white stretched-link" href="/Admin/Categories/Index">Xem chi tiết</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-success text-white mb-4">
-                        <div class="card-body">Success Card</div>
+                        <div class="card-body">Tổng các tài khoản: <span style="font-size: 18px; font-weight: bold;">@ViewBag.CountAccounts</span></div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <a class="small text-white stretched-link" href="/Admin/Users/Index">Xem chi tiết</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-danger text-white mb-4">
-                        <div class="card-body">Danger Card</div>
+                        <div class="card-body">Tổng thư mục con: <span style="font-size: 18px; font-weight: bold;">@ViewBag.CountSubmenu</span></div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <a class="small text-white stretched-link" href="/Admin/Categories/Index">Xem chi tiết</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                 <div class="col-xl-6">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <i class="fas fa-chart-area me-1"></i> Area Chart Example
+                            <i class="fas fa-chart-area me-1"></i> Biểu đồ
                         </div>
                         <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                     </div>
@@ -58,7 +58,7 @@
                 <div class="col-xl-6">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <i class="fas fa-chart-bar me-1"></i> Bar Chart Example
+                            <i class="fas fa-chart-bar me-1"></i> Biểu đồ cột
                         </div>
                         <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                     </div>

@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<NewsApplication.Models.ApplicationUser>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h3>Account</h3>
+<h3>Tài khoản</h3>
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-table me-1"></i> Users
+        <i class="fas fa-table me-1"></i> Tài khoản
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
@@ -17,12 +17,12 @@
                         Email
                     </th>
                     <th>
-                        User's Name
+                        Tên tài khoản
                     </th>
                     <th>
-                        Roles
+                        Quyền hạn
                     </th>
-                    <th>Edit</th>
+                    <th>Sửa</th>
                 </tr>
             </thead>
             <tfoot>
@@ -31,12 +31,12 @@
                         Email
                     </th>
                     <th>
-                        User's Name
+                        Tên tài khoản
                     </th>
                     <th>
-                        Roles
+                        Quyền hạn
                     </th>
-                    <th>Edit</th>
+                    <th>Sửa</th>
                 </tr>
             </tfoot>
             <tbody>
@@ -55,7 +55,7 @@
                             }
                         </td>
                         <td class="col-md-2">
-                            <button class="btn btn-primary" style="margin-right: 5px;">@Html.ActionLink("Edit", "Edit", "Users", new { id = item.Id }, new { @class = "text-white text-decoration-none" }) </button>
+                            <button class="btn btn-primary" style="margin-right: 5px;">@Html.ActionLink("Sửa", "Edit", "Users", new { id = item.Id }, new { @class = "text-white text-decoration-none" }) </button>
                         </td>
                     </tr>
                 }

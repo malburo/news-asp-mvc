@@ -1,37 +1,37 @@
 ﻿@model IEnumerable<NewsApplication.Models.Post>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Bài đăng";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Post</h2>
+<h2>Bài đăng</h2>
 
 <p>
-    <button class="btn btn-primary"> @Html.ActionLink("Create New", "Create", null, new { @class ="text-white text-decoration-none"})</button>
+    <button class="btn btn-primary"> @Html.ActionLink("Tạo mới", "Create", null, new { @class ="text-white text-decoration-none"})</button>
 </p>
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-table me-1"></i> Posts
+        <i class="fas fa-table me-1"></i> Các bài đăng
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Title)
+                       Tiêu đề
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ImageUrl)
+                       Hình ảnh
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Views)
+                        Lượt xem
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CreatedAt)
+                        Ngày khởi tạo
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.UpdatedAt)
+                        Ngày cập nhập
                     </th>
                     <th></th>
                 </tr>
@@ -39,19 +39,19 @@
             <tfoot>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Title)
+                        Tiêu đề
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ImageUrl)
+                        Hình ảnh
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Views)
+                        Lượt xem
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CreatedAt)
+                        Ngày khởi tạo
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.UpdatedAt)
+                        Ngày cập nhập
                     </th>
                     <th></th>
                 </tr>
@@ -78,8 +78,8 @@
                             @Html.DisplayFor(modelItem => item.UpdatedAt)
                         </td>
                         <td>
-                            <button class="btn btn-primary">@Html.ActionLink("Edit", "Edit", new { id = item.PostId }, new { @class = "text-white text-decoration-none" }) </button>
-                            <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.PostId }, new { @class = "text-white text-decoration-none" }) </button>
+                            <button class="btn btn-primary">@Html.ActionLink("Sửa", "Edit", new { id = item.PostId }, new { @class = "text-white text-decoration-none" }) </button>
+                            <button class="btn btn-danger">@Html.ActionLink("Xóa", "Delete", new { id = item.PostId }, new { @class = "text-white text-decoration-none" }) </button>
                         </td>
                     </tr>
                 }

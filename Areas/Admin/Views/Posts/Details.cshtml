@@ -1,18 +1,18 @@
 ﻿@model NewsApplication.Models.Post
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <div>
-    <h4>Post</h4>
+    <h4>Bài đăng</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            <label>Author</label>
+            <label>Tác giả</label>
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            <label>Tiêu đề</label>
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            <label>Hình ảnh</label>
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Views)
+            <label>Lượt xem</label>
         </dt>
 
         <dd>
@@ -44,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
+            <label>Ngày khởi tạo</label>
         </dt>
 
         <dd>
@@ -52,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
+            <label>Ngày cập nhập</label>
         </dt>
 
         <dd>
@@ -62,6 +62,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.PostId }) |
+    @Html.ActionLink("Quay trở lại", "Index")
 </p>

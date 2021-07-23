@@ -1,6 +1,8 @@
 ﻿@model NewsApplication.Models.Post
 @{ ViewBag.Title = "Details";
   Layout = "~/Views/Shared/_Layout.cshtml"; }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
 <!-- Start main -->
 <div class="container">
   <div class="row">
@@ -9,8 +11,7 @@
         <div class="header-post w-100 p-4 bg-light">
           @foreach (var subCategory in Model.SubCategory.ToList())
           {
-            <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
-          }
+    <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>}
           <h2 class="font-weight-bold" style="font-size: 30px; margin-top:24px">@Html.Raw(Model.Title)</h2>
           <p><span>@Model.CreatedAt.ToString("dd/MM/yyyy")</span> bởi <span> <a href="#">@Model.Author.Name</a></span></p>
         </div>
@@ -26,32 +27,28 @@
           <hr />
           @if (Request.IsAuthenticated)
           {
-            <div>
-                <button type="button" class="like-btn" data-post-id="@Model.PostId"><i class="@ViewBag.like fa-thumbs-up    "></i></button>
-                <button type="button" class="dislike-btn" data-post-id="@Model.PostId"><i class="@ViewBag.dislike fa-thumbs-down    "></i></button>
-            </div>
-          }
-          else 
-          {
-            <div class="row p-4 ">
-              <p>Hãy <a href="/account/login">đăng nhập</a> để bày tỏ cảm xúc :D</p>
-            </div>
-          }
+    <div>
+      <button type="button" class="like-btn" data-post-id="@Model.PostId"><i class="@ViewBag.like fa-thumbs-up    "></i></button>
+      <button type="button" class="dislike-btn" data-post-id="@Model.PostId"><i class="@ViewBag.dislike fa-thumbs-down    "></i></button>
+    </div> }
+  else
+  {
+<div class="row p-4 ">
+  <p>Hãy <a href="/account/login">đăng nhập</a> để bày tỏ cảm xúc :D</p>
+</div>}
           <div class="row bg-light p-4" style="margin-top: 24px">
             <h4 style="font-weight: 600;">Thảo luận</h4>
           </div>
           @if (Request.IsAuthenticated)
           {
-            <div class="row p-4 ">
-              @{ Html.RenderAction("Index", "Comment"); }
-            </div>
-          }
-          else 
-          {
-            <div class="row p-4 ">
-              <p>Hãy <a href="/account/login">đăng nhập</a> để bình luận :D</p>
-            </div>
-          }
+    <div class="row p-4 ">
+      @{ Html.RenderAction("Index", "Comment"); }
+    </div> }
+  else
+  {
+<div class="row p-4 ">
+  <p>Hãy <a href="/account/login">đăng nhập</a> để bình luận :D</p>
+</div>}
         </div>
         <div class="col-4 p-4 bg-light">
           <div class="content-post position-sticky">
@@ -72,155 +69,9 @@
 <!-- End main -->
 @section scripts
   {
-  <script>
-    const renderComment = (data) => `
-          <div class="comment">
-            <div class="wrapper">
-              <img src=${data.User.AvatarUrl} alt="" width="24" height="24" style="margin-top: 4px">
-              <div class="w-100">
-                <div class="comment-body">
-                  <div class="username">${data.User.Name}</div>
-                  <div class="content">${data.Content}</div>
-                </div>
-              <button data-comment-id="${data.CommentId}" class="reply btn" style="margin-top: 4px; margin-left: 12px; margin-bottom: 12px">
-                <i class="fas fa-reply"></i>
-                Trả lời
-              </button>
-              </div>
-            </div>
-          </div>
-          <div class="wrapper-sub-comment">
-            <div class="sub-comment-list" data-comment-id="${data.CommentId}">
-            </div>
-            <div class="sub-comment-form hide" data-comment-id="${data.CommentId}">
-              <textarea class="content-sub-comment" name="subComent" rows="5" placeholder="Reply..." data-comment-id="${data.CommentId}"></textarea>
-              <button id="add-sub-comment" data-comment-id="${data.CommentId}" class="btn btn-primary">save</button>
-            </div>
-          </div>
-        `
-    const renderSubComment = (data) => `
-          <div class="sub-comment" data-comment-id="${data.CommentId}">
-            <img src=${data.User.AvatarUrl} alt="" width="24" height="24" style="margin-top: 4px">
-            <div class="sub-comment-body">
-              <div class="username">${data.User.Name}</div>
-              <div class="content">${data.Content}</div>
-            </div>
-          </div>
-        `
-    // handle click reply
-    $(".comment-list").on("click", ".reply", e => {
-      var button = $(e.target);
-      var id = button.attr("data-comment-id");
-      $(`.sub-comment-form[data-comment-id=${id}]`).toggle();
-    })
-
-    // handle add new comment
-    $(".discussion").on("click", "#add-comment", e => {
-      const button = $(e.target);
-      const id = button.attr("data-post-id");
-      const content = $("#content-comment").val();
-      const payload = { postId: id, content: content }
-      $.ajax({
-        url: "/Comment/CreateComment",
-        dataType: "json",
-        type: "POST",
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(payload),
-        success: function (response) {
-          const commentElement = renderComment(response.data);
-          $(".comment-list").prepend(commentElement)
-          $("#content-comment").val("");
-        },
-        error: function (xhr) {
-          console.log('error');
-        }
-      });
-    })
-
-    //  handle add new subcomment
-    $(".discussion").on("click", "#add-sub-comment", e => {
-      var button = $(e.target);
-      const id = button.attr("data-comment-id");
-      const content = $(`.content-sub-comment[data-comment-id=${id}]`).val();
-      const payload = { commentId: id, content: content }
-      $.ajax({
-        url: "/Comment/CreateSubComment",
-        dataType: "json",
-        type: "POST",
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(payload),
-        success: function (response) {
-          const subCommentElement = renderSubComment(response.data);
-          $(`.sub-comment-list[data-comment-id=${response.data.CommentId}]`).append(subCommentElement)
-          $(`.content-sub-comment[data-comment-id=${id}]`).val("")
-        },
-        error: function (xhr) {
-          console.log('error');
-        }
-      });
-    })
-
-    $(document).ready(function () {
-      $(".like-btn").click(function () {
-        var button = $(".like-btn");
-        const id = button.attr("data-post-id");
-        const payload = { postId: id }
-        $.ajax({
-          url: "/Reaction/Like",
-          dataType: "json",
-          type: "POST",
-          contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify(payload),
-          success: function (response) {
-            if (response == "like") {
-              button.children().removeClass("far");
-              button.children().addClass("fas");
-              if ($(".dislike-btn").children().hasClass("fas")) {
-                $(".dislike-btn").children().removeClass("fas");
-                $(".dislike-btn").children().addClass("far");
-              }
-            } else {
-              button.children().removeClass("fas");
-              button.children().addClass("far");
-            }
-          },
-          error: function (xhr, stt, thrown) {
-            console.log('error');
-            alert(thrown);
-          }
-        });
-      });
-    })
-    $(document).ready(function () {
-      $(".dislike-btn").click(function () {
-        var button = $(".dislike-btn");
-        const id = button.attr("data-post-id");
-        const payload = { postId: id }
-        $.ajax({
-          url: "/Reaction/Dislike",
-          dataType: "json",
-          type: "POST",
-          contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify(payload),
-          success: function (response) {
-            if (response == "dislike") {
-              button.children().removeClass("far");
-              button.children().addClass("fas");
-              if ($(".like-btn").children().hasClass("fas")) {
-                $(".like-btn").children().removeClass("fas");
-                $(".like-btn").children().addClass("far");
-              }
-            } else {
-              button.children().removeClass("fas");
-              button.children().addClass("far");
-            }
-          },
-          error: function (xhr, stt, thrown) {
-            console.log('error');
-          }
-        });
-      });
-    })
-  </script>
+  <script src="~/Content/assets/js/comment.js"></script>
+  <script src="~/Content/assets/js/bookmark.js"></script>
+  <script src="~/Content/assets/js/reaction.js"></script>
 }
 @Scripts.Render("~/bundles/jqueryval")
+

@@ -1,0 +1,22 @@
+﻿@using NewsApplication.Models
+<div class="post">
+  <a href="/post/showpost/@Model.PostId">
+    <img src="@Model.ImageUrl" alt="">
+  </a>
+  <div class="post-body">
+    <div class="title">
+      <p>@Model.Title</p>
+    </div>
+    <div class="post-footer">
+      @if (Model.isBookmark)
+      {
+        <button data-post-id="@Model.PostId" data-is-bookmark="true" class="save isbookmark"><i class="fas fa-bookmark"></i></button>
+      }
+      else
+      {
+        <button data-post-id="@Model.PostId" data-is-bookmark="false" class="save"><i class="fas fa-bookmark"></i></button>
+      }
+      <button class="view"><i class="fas fa-eye"></i><span class="view-text">@Model.Views</span></button>
+    </div>
+  </div>
+</div>

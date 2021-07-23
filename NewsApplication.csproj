@@ -209,6 +209,10 @@
     <Compile Include="Migrations\202107101925434_version 1.1.Designer.cs">
       <DependentUpon>202107101925434_version 1.1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107230519177_version 1.2.cs" />
+    <Compile Include="Migrations\202107230519177_version 1.2.Designer.cs">
+      <DependentUpon>202107230519177_version 1.2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -739,6 +743,9 @@
     <Content Include="Content\assets\css\new_game.css" />
     <Content Include="Content\assets\css\styles.css" />
     <Content Include="Content\assets\js\app.js" />
+    <Content Include="Content\assets\js\bookmark.js" />
+    <Content Include="Content\assets\js\comment.js" />
+    <Content Include="Content\assets\js\reaction.js" />
     <Content Include="Content\assets\lib\css\style.css" />
     <Content Include="Content\assets\lib\img\Four-Horsemen-of-the-Apocalypse_3840x2160.jpg" />
     <Content Include="Content\assets\lib\img\jungle_harbor_by_fengua_zhong_de2molv.jpg" />
@@ -918,6 +925,8 @@
     <Content Include="Views\Post\_rate3postPartial.cshtml" />
     <Content Include="Views\Post\_relatedPostPartial.cshtml" />
     <Content Include="Views\Bookmark\Index.cshtml" />
+    <Content Include="Views\Post\_postCard.cshtml" />
+    <Content Include="Views\Post\_postCardNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -937,6 +946,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107101925434_version 1.1.resx">
       <DependentUpon>202107101925434_version 1.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107230519177_version 1.2.resx">
+      <DependentUpon>202107230519177_version 1.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

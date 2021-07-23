@@ -35,5 +35,14 @@ namespace NewsApplication.Controllers
             context.SaveChanges();
             return Json("thanh cong", JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult DeleteBookmark(int Id)
+        {
+            string userId = User.Identity.GetUserId();
+            var currentBookmark = context.Bookmarks.FirstOrDefault(i => i.PostId == Id && i.UserId == userId);
+            context.Bookmarks.Remove(currentBookmark);
+            context.SaveChanges();
+            return Json("thanh cong", JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -10,25 +10,9 @@
   <div class="row">
     @foreach (var post in ViewBag.CategoryPosts)
     {
-      <div class="col-4 ">
-        <article class="post position-relative " style="height: 400px">
-          <a href="/post/showpost/@post.PostId" class="w-100">
-            <img src="@post.ImageUrl" style="width: 100%;height: 200px; object-fit: cover" alt="cover">
-          </a>
-          <div class="related-post-tag pt-2">
-            @foreach (var subCategory in post.SubCategory)
-            {
-              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
-            }
-          </div>
-          <div class="related-post-title">
-            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@post.Title</h2>
-            <p>
-              <span>@post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @post.Author.Name
-            </p>
-          </div>
-        </article>
-      </div>
+    <div class="col-4 g-3">
+      @{ Html.RenderAction("postCard", "Post", new { id = post.PostId }); }
+    </div>
     }
   </div>
 </div>
@@ -43,4 +27,9 @@
       }
     </div>
   </div>
+}
+
+@section scripts
+  {
+  <script src="~/Content/assets/js/bookmark.js"></script>
 }

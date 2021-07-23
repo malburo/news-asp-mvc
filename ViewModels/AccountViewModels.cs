@@ -83,7 +83,7 @@ namespace NewsApplication.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email không được để trống")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -112,19 +112,19 @@ namespace NewsApplication.Models
 
     public class UpdateUserViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email không được để trống")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(255, ErrorMessage = "The must be at least characters long.")]
-        [Display(Name = "FullName")]
+        [Required(ErrorMessage = "Họ và tên không được để trống")]
+        [StringLength(255, ErrorMessage = "Tên phải nằm trong khoảng từ 0 - 255 kí tự")]
+        [Display(Name = "Họ và tên")]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(255, ErrorMessage = "The must be at least characters long.")]
-        [Display(Name = "AvatarUrl")]
+        [Required(ErrorMessage = "Ảnh đại diện không được để trống")]
+        [StringLength(255, ErrorMessage = "Link ảnh quá dài")]
+        [Display(Name = "Ảnh đại diện")]
         public string AvatarUrl { get; set; }
     }
 }

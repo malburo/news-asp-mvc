@@ -177,7 +177,7 @@ a {
 }
 
 .container {
-  padding-top: 50px !important;
+  max-width: 1280px !important
 }
 
 .container .header-post .header-post-tag {
@@ -347,3 +347,4 @@ footer .social-media li:not(:last-child) {
   text-decoration: none;
   color: black;
 }
+

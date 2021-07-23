@@ -1,0 +1,28 @@
+﻿@using NewsApplication.Models
+<div class="post-card">
+  <a href="/post/showpost/@Model.PostId">
+    <img src="@Model.ImageUrl" alt="">
+  </a>
+  <div class="post-card-body">
+    @foreach (var subCategory in Model.SubCategory)
+    {
+      <a class="category" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
+    }
+    <a href="/post/showpost/@Model.PostId" class="post-card-title">@Model.Title</a>
+    <div class="author">
+      <img src="@Model.Author.AvatarUrl" alt="" class="avatar">
+      <span>@Model.Author.Name</span>
+    </div>
+  </div>
+  <div class="post-card-footer">
+    @if (Model.isBookmark)
+    {
+      <button data-post-id="@Model.PostId" data-is-bookmark="true" class="save isbookmark"><i class="fas fa-bookmark"></i></button>
+    }
+    else
+    {
+      <button data-post-id="@Model.PostId" data-is-bookmark="false" class="save"><i class="fas fa-bookmark"></i></button>
+    }
+    <button class="view"><i class="fas fa-eye"></i><span class="view-text">@Model.Views</span></button>
+  </div>
+</div>

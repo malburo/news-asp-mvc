@@ -441,6 +441,8 @@ namespace NewsApplication.Controllers
             // Update it with the values from the view model
             user.Name = model.Name;
             user.AvatarUrl = model.AvatarUrl;
+            user.Email = model.Email;
+            user.UserName = model.Email;
             var result = await UserManager.UpdateAsync(user);
 
             return RedirectToAction("Index", "Home");

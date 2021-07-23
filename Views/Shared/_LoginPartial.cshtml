@@ -10,10 +10,10 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src=@ViewBag.currentUser.AvatarUrl alt="avatar" width="24px" height="24px" />
+          <img src=@ViewBag.currentUser.AvatarUrl alt="avatar" width="24" height="24" />
           @ViewBag.currentUser.Name
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-right" style="right: 0; left: auto;" aria-labelledby="navbarDarkDropdownMenuLink">
           <li><a class="dropdown-item" href="/bookmark">Bài viết đã lưu</a></li>
           <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cài đặt</a></li>
           <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>

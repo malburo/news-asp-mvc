@@ -5,96 +5,45 @@
 @{
   ViewBag.Title = "Index";
 }
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="container">
-  <div class="row bg-light p-4" style="margin-bottom:24px">
-    <div class="col-8">
-      <article class="post position-relative ">
-        <button data-post-id="@ViewBag.Top1Post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
-        <a href="/post/showpost/@ViewBag.Top1Post.PostId" class="w-100">
-          <img src="@ViewBag.Top1Post.ImageUrl" style="width: 100%;height: 425px; object-fit: cover" alt="cover">
-        </a>
-        <div class="related-post-tag pt-2">
-          @foreach (var subCategory in @ViewBag.Top1Post.SubCategory)
-          {
-            <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
-          }
-        </div>
-        <div class="related-post-title">
-          <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@ViewBag.Top1Post.Title</h2>
-          <p>
-            <span>@ViewBag.Top1Post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @ViewBag.Top1Post.Author.Name
-          </p>
-        </div>
-      </article>
-    </div>
-    <div class="col-4">
-      <div class="row">
-        <article class="post position-relative ">
-          <button data-post-id="@ViewBag.Top2Post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
-          <a href="/post/showpost/@ViewBag.Top2Post.PostId" class="w-100">
-            <img src="@ViewBag.Top2Post.ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
-          </a>
-          <div class="related-post-tag pt-2">
-            @foreach (var subCategory in @ViewBag.Top2Post.SubCategory)
-            {
-              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
-            }
-          </div>
-          <div class="related-post-title">
-            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@ViewBag.Top2Post.Title</h2>
-            <p>
-              <span>@ViewBag.Top2Post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @ViewBag.Top2Post.Author.Name
-            </p>
-          </div>
-        </article>
-      </div>
-      <div class="row">
-        <article class="post position-relative ">
-          <button data-post-id="@ViewBag.Top3Post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
-          <a href="/post/showpost/@ViewBag.Top3Post.PostId" class="w-100">
-            <img src="@ViewBag.Top3Post.ImageUrl" style="width: 100%;height: 150px; object-fit: cover" alt="cover">
-          </a>
-          <div class="related-post-tag pt-2">
-            @foreach (var subCategory in @ViewBag.Top3Post.SubCategory)
-            {
-              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
-            }
-          </div>
-          <div class="related-post-title">
-            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@ViewBag.Top3Post.Title</h2>
-            <p>
-              <span>@ViewBag.Top3Post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @ViewBag.Top3Post.Author.Name
-            </p>
-          </div>
-        </article>
+  <div class="row g-3" style="margin-bottom:24px;">
+    <div class="col-6">
+      <div style="height: 418px">
+       @{ Html.RenderAction("postCardNew", "Post", new { id = @ViewBag.Top1Post.PostId }); }
       </div>
     </div>
-  </div>
-  <div class="row bg-light p-4">
+    <div class="col-3">
+      <div class="row">
+        <div style="height: 200px; margin-bottom: 16px">
+          @{ Html.RenderAction("postCardNew", "Post", new { id = @ViewBag.Top2Post.PostId }); }
+        </div>
+      </div>
+      <div class="row">
+        <div style="height: 200px; margin-bottom: 16px">
+          @{ Html.RenderAction("postCardNew", "Post", new { id = @ViewBag.Top3Post.PostId }); }
+        </div>
+      </div>
+      </div>
+    <div class="col-3">
+      <div class="row">
+        <div style="height: 200px; margin-bottom: 16px">
+          @{ Html.RenderAction("postCardNew", "Post", new { id = @ViewBag.Top4Post.PostId }); }
+        </div>
+      </div>
+      <div class="row">
+      <div style="height: 200px; margin-bottom: 16px">
+        @{ Html.RenderAction("postCardNew", "Post", new { id = @ViewBag.Top5Post.PostId }); }
+      </div>
+      </div>
+    </div>
+    </div>
+  <div class="row g-3">
     @foreach (var post in Model)
     {
-      <div class="col-4 ">
-        <article class="post position-relative " style="height: 400px">
-          <button data-post-id="@post.PostId" class="position-absolute btn btn-primary save" style="top:5px; right:5px; padding: 4px 12px; font-size: 16px; z-index: 2"><i class="far fa-bookmark"></i></button>
-          <a href="/post/showpost/@post.PostId" class="w-100">
-            <img src="@post.ImageUrl" style="width: 100%;height: 200px; object-fit: cover" alt="cover">
-          </a>
-          <div class="related-post-tag pt-2">
-            @foreach (var subCategory in post.SubCategory.ToList())
-            {
-              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
-            }
-          </div>
-          <div class="related-post-title">
-            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@post.Title</h2>
-            <p>
-              <span>@post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @post.Author.Name
-            </p>
-          </div>
-        </article>
-      </div>
+    <div class="col-3">
+      @{ Html.RenderAction("postCard", "Post", new { id = post.PostId }); }
+    </div>
     }
   </div>
 </div>
@@ -109,39 +58,11 @@
     </div>
   </div>
 </div>
-<div>
+<div style="margin-top: 48px; margin-bottom: 48px">
   @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
 </div>
 
 @section scripts
   {
-  <script>
-    $("#close-toast").click(e => {
-      console.log(e.target)
-      $("#liveToast").removeClass("show")
-    })
-    $(document).ready(() => {
-      $(".save").click(e => {
-        var button = $(e.currentTarget);
-        var id = button.attr("data-post-id");
-        $.ajax({
-          url: "/bookmark/bookmark",
-          dataType: "json",
-          type: "POST",
-          contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify({ Id: id }),
-          success: function (data) {
-            $("#liveToast").addClass("show")
-            button.addClass("d-none")
-            setTimeout(() => {
-              $("#liveToast").removeClass("show")
-            }, 2000)
-          },
-          error: function (xhr) {
-            console.log('error');
-          }
-        });
-      })
-    })
-  </script>
+  <script src="~/Content/assets/js/bookmark.js"></script>
 }

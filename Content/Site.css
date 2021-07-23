@@ -1,1 +1,194 @@
-﻿
+﻿.post {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  height: 100%;
+}
+.post p {
+  margin-bottom: 0;
+}
+.post::before {
+  content: "";
+  background: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,0.3) 100%);
+  background: linear-gradient(top, transparent 0%, rgba(0,0,0,0.3) 100%);
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  top: 0;
+  opacity: 1;
+}
+
+.post:hover .post-body {
+  bottom: 0px;
+}
+
+.post img {
+  width: 100%;
+  height: 100%;
+}
+
+.post-body .title {
+  padding: 12px;
+}
+
+.post-body {
+  position: absolute;
+  bottom: -45px;
+  color: white;
+  left: 0;
+  right: 0;
+  transition: bottom 0.3s ease-out, opacity 0.3s .18s ease-out;
+  z-index: 2;
+}
+
+.post-footer {
+  background: rgba(0,0,0,0.2);
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+.post-footer .save {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #edf2f6;
+  font-size: 12px;
+  color: #9aa8af;
+  border: 1px solid #f0f0f0;
+}
+
+.post-footer .view {
+  font-size: 16px;
+  color: #B2C0C8;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+}
+
+.post-footer .view-text {
+  font-size: 12px;
+  color: #9aa8af;
+  border: none;
+  background: none;
+  margin-left: 4px;
+}
+
+.post-footer .save:hover {
+  color: #778d99;
+}
+
+.post-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 40px 0 rgb(0 0 0 / 7%);
+  overflow: hidden;
+  background-color: white;
+  animation: fadeIn 0.3s ease-in forwards;
+  transition: all 0.3s ease-out;
+}
+.post-card:hover {
+  box-shadow: rgb(45 45 45 / 5%) 0px 2px 2px,
+    rgb(49 49 49 / 5%) 0px 4px 4px,
+    rgb(42 42 42 / 5%) 0px 8px 8px,
+    rgb(32 32 32 / 5%) 0px 16px 16px,
+    rgb(49 49 49 / 5%) 0px 32px 32px,
+    rgb(35 35 35 / 5%) 0px 64px 64px;
+}
+  .post-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  }
+.post-card:hover img {
+  opacity: 0.8;
+}
+.post-card-body .post-card-title {
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-decoration: none;
+  color: black;
+}
+.post-card-body .author {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.post-card-body .author .avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.post-card-body {
+  padding: 12px;
+}
+
+.post-card-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: .5px solid #f0f0f0;
+  padding: 12px;
+}
+  .post-card-footer .save {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #edf2f6;
+    font-size: 12px;
+    color: #9aa8af;
+    border: 1px solid #f0f0f0;
+  }
+  .post-card-footer .view {
+    font-size: 16px;
+    color: #B2C0C8;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+  }
+  .post-card-footer .view-text {
+    font-size: 12px;
+    color: #9aa8af;
+    border: none;
+    background: none;
+    margin-left: 4px;
+  }
+.post-card-footer .save:hover {
+  color: #778d99;
+}
+.category {
+  background: rgba(108, 93, 211, 0.1);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #3F8CFF;
+  padding: 4px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600
+}
+  .category:hover {
+    text-decoration: none;
+    color: #3F8CFF;
+  }
+
+.isbookmark {
+  color: white !important;
+  background: #FFB700 !important;
+}

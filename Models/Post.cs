@@ -18,7 +18,7 @@ namespace NewsApplication.Models
         public string Title { get; set; }
 
         [AllowHtml]
-        [StringLength(2000)]
+        [StringLength(10000)]
         public string Content { get; set; }
 
         [StringLength(250)]
@@ -40,5 +40,7 @@ namespace NewsApplication.Models
         public virtual ICollection<Reaction> Reactions { get; set; }
 
         public virtual ICollection<SubCategory> SubCategory { get; set; }
+
+        public bool isBookmark = false;
     }
 }

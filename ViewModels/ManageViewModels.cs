@@ -41,20 +41,20 @@ namespace NewsApplication.Models
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu mới")]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải nằm  trong khoảng 6 - 100 kí tự ", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "Mật khẩu không trùng khớp")]
         public string ConfirmPassword { get; set; }
     }
 

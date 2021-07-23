@@ -7,35 +7,24 @@
 }
 <!-- Start main -->
 <div class="container list-news-container">
-  <div class="head_title">
-    <h1 id="text_title">@ViewBag.SubCategory.Name</h1>
+  <div>
+    <h1>@ViewBag.SubCategory.Name</h1>
   </div>
   <div class="row">
     @foreach (var post in Model)
     {
-      <div class="col-4 ">
-        <article class="post position-relative " style="height: 400px">
-          <a href="/post/showpost/@post.PostId" class="w-100">
-            <img src="@post.ImageUrl" style="width: 100%;height: 200px; object-fit: cover" alt="cover">
-          </a>
-          <div class="related-post-tag pt-2">
-            @foreach (var subCategory in post.SubCategory)
-            {
-              <a class="btn btn-danger text-capitalize" href="/Home/DetailsCategory/@subCategory.SubCategoryId">@subCategory.Name</a>
-            }
-          </div>
-          <div class="related-post-title">
-            <h2 class="text-dark w-100 font-weight-bold" style="font-size: 25px;">@post.Title</h2>
-            <p>
-              <span>@post.CreatedAt.ToString("dd/MM/yyyy")</span> bởi @post.Author.Name
-            </p>
-          </div>
-        </article>
-      </div>
+    <div class="col-4 ">
+      @{ Html.RenderAction("postCard", "Post", new { id = post.PostId }); }
+    </div>
     }
   </div>
-  <div>
+  <div style="margin-top: 24px; margin-bottom: 24px">
     @Html.PagedListPager(Model, page => Url.Action("DetailsCategory", new { page = page }))
   </div>
 </div>
+
+@section scripts
+  {
+  <script src="~/Content/assets/js/bookmark.js"></script>
+}
 <!-- End main -->

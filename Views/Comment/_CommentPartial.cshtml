@@ -4,7 +4,7 @@
   <div class="comment-form">
     <img src=@ViewBag.currentUser.AvatarUrl alt="" width="24" height="24" style="margin-top: 4px">
     <div class="w-100">
-    <textarea id="content-comment" name="comment" rows="2" placeholder="Bình luận điều gì đó..."></textarea>
+    <textarea id="content-comment" name="comment" rows="2" placeholder="Bình luận..."></textarea>
     <button id="add-comment" data-post-id="@ViewBag.postId" class="btn btn-primary">Bình luận</button>
     </div>
   </div>
@@ -19,7 +19,7 @@
             <div class="username">@comment.User.Name</div>
             <div class="content">@comment.Content</div>
           </div>
-          <button data-comment-id="@comment.CommentId" class="reply btn" style="margin-top: 4px; margin-left: 12px; margin-bottom: 12px">
+          <button data-comment-id="@comment.CommentId" class="reply btn">
             <i class="fas fa-reply"></i>
             Trả lời
           </button>
@@ -40,8 +40,8 @@
           }
         </div>
         <div class="sub-comment-form hide" data-comment-id="@comment.CommentId">
-          <textarea class="content-sub-comment" name="subComent" rows="1" placeholder="Bình luận điều gì đó..." data-comment-id="@comment.CommentId"></textarea>
-          <button id="add-sub-comment" data-comment-id="@comment.CommentId" class="btn btn-primary">Trả lời</button>
+          <textarea class="content-sub-comment" name="subComent" rows="1" placeholder="Bình luận..." data-comment-id="@comment.CommentId"></textarea>
+          <button id="add-sub-comment" data-comment-id="@comment.CommentId" class="btn btn-primary">Gửi</button>
         </div>
       </div>
     }

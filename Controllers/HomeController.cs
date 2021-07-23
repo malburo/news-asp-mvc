@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace NewsApplication.Controllers
 {
@@ -20,10 +21,14 @@ namespace NewsApplication.Controllers
             var top1Post = postList.First();
             var top2Post = postList.Skip(1).First();
             var top3Post = postList.Skip(2).First();
+            var top4Post = postList.Skip(3).First();
+            var top5Post = postList.Skip(4).First();
             ViewBag.Top1Post = top1Post;
             ViewBag.Top2Post = top2Post;
             ViewBag.Top3Post = top3Post;
-            var posts = postList.Skip(3).ToList();
+            ViewBag.Top4Post = top4Post;
+            ViewBag.Top5Post = top5Post;
+            var posts = postList.Skip(5).ToList();
             int pageSize = 6;
             int pageNum = (page ?? 1);
             return View(posts.ToPagedList(pageNum, pageSize));
@@ -41,10 +46,12 @@ namespace NewsApplication.Controllers
                                         where p.SubCategory.Any(s => s.CategoryId == id)
                                         orderby p.CreatedAt descending
                                         select p).Take(6).ToList();
+
             List<Post> subCategoryPosts = (from p in db.Posts
                                            where p.SubCategory.Any(s => s.CategoryId == id)
                                            orderby p.CreatedAt descending
                                            select p).ToList();
+
             ViewBag.SubCategories = subCategories;
             ViewBag.CategoryPosts = categoryPosts;
             ViewBag.SubCategoryPosts = subCategoryPosts;
@@ -83,6 +90,19 @@ namespace NewsApplication.Controllers
                                 where p.SubCategory.Any(s => s.SubCategoryId == id)
                                 orderby p.CreatedAt descending
                                 select p).ToList();
+            string userId = User.Identity.GetUserId();
+
+            foreach (var post in Posts)
+            {
+                if (post.Bookmarks.FirstOrDefault(i => i.PostId == post.PostId && i.UserId == userId) == null)
+                {
+                    post.isBookmark = false;
+                }
+                else
+                {
+                    post.isBookmark = true;
+                }
+            }
             ViewBag.Posts = Posts;
             int pageSize = 3;
             int pageNum = (page ?? 1);

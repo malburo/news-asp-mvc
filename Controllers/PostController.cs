@@ -40,6 +40,8 @@ namespace NewsApplication.Controllers
         {
             string userId = User.Identity.GetUserId();
             Post dbpost = context.Posts.FirstOrDefault(p => p.PostId == id);
+            dbpost.Views++;
+            context.SaveChanges();
             var reaction = Check(id);
             ViewBag.Like = "";
             if (reaction.Like == true)
@@ -59,6 +61,37 @@ namespace NewsApplication.Controllers
                 ViewBag.dislike = "far";
             }
             return View(dbpost);
+        }
+        [ChildActionOnly]
+        public ActionResult postCard(int id)
+        {
+            var post = context.Posts.Find(id);
+            string userId = User.Identity.GetUserId();
+            if (post.Bookmarks.FirstOrDefault(i => i.PostId == post.PostId && i.UserId == userId) == null)
+            {
+                post.isBookmark = false;
+            }
+            else
+            {
+                post.isBookmark = true;
+            }
+            return PartialView("_postCard", post);
+        }
+
+        [ChildActionOnly]
+        public ActionResult postCardNew(int id)
+        {
+            var post = context.Posts.Find(id);
+            string userId = User.Identity.GetUserId();
+            if (post.Bookmarks.FirstOrDefault(i => i.PostId == post.PostId && i.UserId == userId) == null)
+            {
+                post.isBookmark = false;
+            }
+            else
+            {
+                post.isBookmark = true;
+            }
+            return PartialView("_postCardNew", post);
         }
 
         [ChildActionOnly]
